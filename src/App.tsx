@@ -13,7 +13,9 @@ import {
   Wrench,
   ChevronRight,
   BadgeCheck,
+  Banknote,
 } from 'lucide-react'
+import logoImg from './assets/logo.jpg'
 
 function Instagram({ className = '' }: { className?: string }) {
   return (
@@ -129,9 +131,11 @@ const RESEÑAS = [
 function Logo({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
-      <div className="w-10 h-10 rounded-full bg-[#ef78ba] flex items-center justify-center shrink-0 border-2 border-white/20">
-        <span className="font-display text-white text-sm leading-none">KK</span>
-      </div>
+      <img
+        src={logoImg}
+        alt="King Kong Autopartes - Desarmadero Oficial Coronel Suárez"
+        className="w-11 h-11 rounded-full shrink-0 object-cover"
+      />
       <div className="leading-none">
         <div className="font-display text-lg tracking-tight">
           King Kong <span className="kk-pink">Autopartes</span>
@@ -300,7 +304,7 @@ export default function App() {
             <div>
               <div className="font-display text-base uppercase">Desarmadero oficial, sin vueltas</div>
               <div className="text-sm opacity-80">
-                Inscriptos en DNRPA (registro N° 3566). Piezas identificadas y con comprobante.
+                Inscriptos en DNRPA (registro N° 3566) y adheridos a CARVA. Piezas identificadas y con comprobante.
               </div>
             </div>
           </div>
@@ -515,6 +519,13 @@ export default function App() {
                       <div className="text-sm text-black/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
                     </div>
                   </div>
+                  <div className="flex gap-3">
+                    <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
+                    <div>
+                      <div className="font-bold">Formas de pago</div>
+                      <div className="text-sm text-black/60">Efectivo, transferencia y Mercado Pago. Consultá por otras opciones.</div>
+                    </div>
+                  </div>
                 </div>
                 <a
                   href={MAPS}
@@ -524,6 +535,17 @@ export default function App() {
                 >
                   <MapPin className="w-4 h-4" /> Cómo llegar (Google Maps)
                 </a>
+              </div>
+              <div className="mt-5 border-4 border-white/10">
+                <iframe
+                  title="Mapa - King Kong Autopartes, Eucaliptus 4036, Coronel Suárez"
+                  src="https://maps.google.com/maps?q=King%20Kong%20Autopartes%20Eucaliptus%204036%20Coronel%20Su%C3%A1rez&z=15&output=embed"
+                  className="w-full h-64 block"
+                  style={{ border: 0 }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  allowFullScreen
+                />
               </div>
               <div className="mt-5 flex flex-wrap gap-3">
                 <a

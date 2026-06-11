@@ -2,6 +2,13 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.tsx'
+import logoUrl from './assets/logo.jpg'
+
+const favicon = document.createElement('link')
+favicon.rel = 'icon'
+favicon.type = 'image/jpeg'
+favicon.href = logoUrl
+document.head.appendChild(favicon)
 
 const fontLink = document.createElement('link')
 fontLink.rel = 'stylesheet'
