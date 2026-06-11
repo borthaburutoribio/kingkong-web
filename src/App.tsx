@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Phone,
   MapPin,
@@ -12,8 +13,11 @@ import {
   PackageCheck,
   Wrench,
   ChevronRight,
+  ChevronLeft,
   BadgeCheck,
   Banknote,
+  Car,
+  Settings,
 } from 'lucide-react'
 import logoImg from './assets/logo.jpg'
 
@@ -28,105 +32,83 @@ function Instagram({ className = '' }: { className?: string }) {
 }
 
 const WSP = {
-  mauro: { nombre: 'Mauro', tel: '+54 9 2926 54-7050', link: 'https://wa.me/5492926547050' },
+  mauro:   { nombre: 'Mauro',   tel: '+54 9 2926 54-7050', link: 'https://wa.me/5492926547050' },
   agustin: { nombre: 'Agustín', tel: '+54 9 2926 51-8539', link: 'https://wa.me/5492926518539' },
   gonzalo: { nombre: 'Gonzalo', tel: '+54 9 2926 40-1066', link: 'https://wa.me/5492926401066' },
 }
 
 const MSG = encodeURIComponent('Hola! Vi la página web de King Kong Autopartes y quería consultar por un repuesto.')
-
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=King+Kong+Autopartes+Eucaliptus+4036+Coronel+Suarez'
 
-function WspButton({ link, children }: { link: string; children: React.ReactNode }) {
+const PARTES = [
+  'Motores',
+  'Cajas de velocidad',
+  'Puertas',
+  'Computadoras (ECU)',
+  'Alternadores',
+  'Bombas de nafta',
+  'Compresores',
+  'Trompas y paragolpes',
+  'Ópticas',
+  'Trenes y ejes',
+  'Asientos e interiores',
+  'Electroventiladores',
+]
+
+const MARCAS = [
+  'Volkswagen','Chevrolet','Ford','Fiat','Renault','Peugeot',
+  'Citroën','Toyota','Honda','Nissan','Suzuki','Jeep',
+  'Chery','Hyundai','Kia','Mercedes-Benz',
+]
+
+const MODELOS: Record<string, string[]> = {
+  'Volkswagen':    ['Gol', 'Polo', 'Golf', 'Vento', 'Amarok', 'Suran', 'Passat', 'Fox', 'Saveiro', 'Caddy'],
+  'Chevrolet':     ['Onix', 'Cruze', 'Tracker', 'S10', 'Agile', 'Celta', 'Corsa', 'Classic', 'Prisma', 'Montana'],
+  'Ford':          ['Fiesta', 'Focus', 'EcoSport', 'Ranger', 'Mondeo', 'Ka', 'Territory', 'Fusion', 'F-100'],
+  'Fiat':          ['Palio', 'Uno', 'Cronos', 'Argo', 'Punto', 'Siena', 'Bravo', 'Tipo', 'Toro', 'Fiorino'],
+  'Renault':       ['Sandero', 'Logan', 'Duster', 'Kangoo', 'Clio', 'Fluence', 'Megane', 'Symbol', 'Stepway', 'Oroch'],
+  'Peugeot':       ['206', '207', '208', '308', '408', '2008', '3008', '5008', 'Partner', '301'],
+  'Citroën':       ['C3', 'C4', 'C4 Cactus', 'Berlingo', 'Jumpy', 'Xsara Picasso', 'C-Elysée'],
+  'Toyota':        ['Etios', 'Yaris', 'Corolla', 'Hilux', 'SW4', 'RAV4', 'Fortuner', 'Land Cruiser'],
+  'Honda':         ['City', 'Civic', 'Fit', 'HR-V', 'CR-V', 'Jazz', 'WR-V'],
+  'Nissan':        ['March', 'Versa', 'Sentra', 'Tiida', 'Frontier', 'X-Trail', 'Kicks'],
+  'Suzuki':        ['Jimny', 'Swift', 'Vitara', 'Baleno', 'S-Cross', 'Ignis'],
+  'Jeep':          ['Renegade', 'Compass', 'Grand Cherokee', 'Cherokee', 'Wrangler'],
+  'Chery':         ['Tiggo 2', 'Tiggo 3', 'Tiggo 4', 'Tiggo 5', 'Tiggo 7', 'Arrizo 5', 'Arrizo 6'],
+  'Hyundai':       ['HB20', 'i10', 'i20', 'i30', 'Creta', 'Tucson', 'ix35', 'Santa Fe'],
+  'Kia':           ['Picanto', 'Rio', 'Cerato', 'Sportage', 'Sorento', 'Soul', 'Seltos'],
+  'Mercedes-Benz': ['Clase A', 'Clase C', 'Clase E', 'GLA', 'GLC', 'Sprinter', 'Vito'],
+}
+
+const ASEGURADORAS = [
+  'Sancor Seguros','Federación Patronal','La Segunda','Seguros Rivadavia',
+  'San Cristóbal','Mercantil Andina','Provincia Seguros','La Caja',
+  'Allianz','Zurich','Orbis Seguros','Berkley',
+]
+
+const RESEÑAS = [
+  { nombre: 'Alejandro Besano', texto: 'Variedad de autopartes y en buen estado. Excelente atención y precios. Lo más importante, todo de origen legal.' },
+  { nombre: 'Ezequiel Olmedo',  texto: 'Excelente atención y súper rápida la atención de los chicos que trabajan ahí.' },
+  { nombre: 'Rodrigo Osorio',   texto: '¡Tienen de todo, excelentes precios!' },
+  { nombre: 'Lucio Schwerdt',   texto: 'Muchos repuestos de todo tipo de vehículos, ¡recomendable!' },
+  { nombre: 'Hernán Grandjean', texto: 'Gracias a los chicos de King Kong Autopartes. Excelente atención.' },
+  { nombre: 'Rafa Prieto',      texto: 'Tienen muchos repuestos y a un muy buen precio 👍' },
+]
+
+function WspButton({ link, children, size = 'md' }: { link: string; children: React.ReactNode; size?: 'sm' | 'md' }) {
+  const pad = size === 'sm' ? 'px-4 py-2.5 text-sm' : 'px-6 py-3.5 text-base'
   return (
     <a
       href={`${link}?text=${MSG}`}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 px-6 py-3.5 font-bold text-base tracking-wide transition-transform hover:-translate-y-0.5 bg-[#ef78ba] text-[#111114]"
+      className={`inline-flex items-center gap-2 ${pad} font-bold tracking-wide transition-all hover:-translate-y-0.5 hover:shadow-lg bg-[#ef78ba] text-[#111114]`}
     >
-      <MessageCircle className="w-5 h-5" />
+      <MessageCircle className="w-4 h-4 shrink-0" />
       {children}
     </a>
   )
 }
-
-const PARTES = [
-  'MOTORES',
-  'CAJAS DE VELOCIDAD',
-  'PUERTAS',
-  'COMPUTADORAS (ECU)',
-  'ALTERNADORES',
-  'BOMBAS DE NAFTA',
-  'COMPRESORES',
-  'TROMPAS Y PARAGOLPES',
-  'ÓPTICAS',
-  'TRENES Y EJES',
-  'ASIENTOS E INTERIORES',
-  'ELECTROVENTILADORES',
-]
-
-const MARCAS = [
-  'Volkswagen',
-  'Chevrolet',
-  'Ford',
-  'Fiat',
-  'Renault',
-  'Peugeot',
-  'Citroën',
-  'Toyota',
-  'Honda',
-  'Nissan',
-  'Suzuki',
-  'Jeep',
-  'Chery',
-  'Hyundai',
-  'Kia',
-  'Mercedes-Benz',
-]
-
-const ASEGURADORAS = [
-  'Sancor Seguros',
-  'Federación Patronal',
-  'La Segunda',
-  'Seguros Rivadavia',
-  'San Cristóbal',
-  'Mercantil Andina',
-  'Provincia Seguros',
-  'La Caja',
-  'Allianz',
-  'Zurich',
-  'Orbis Seguros',
-  'Berkley',
-]
-
-const RESEÑAS = [
-  {
-    nombre: 'Alejandro Besano',
-    texto:
-      'Variedad de autopartes y en buen estado. Excelente atención y precios. Lo más importante, todo de origen legal.',
-  },
-  {
-    nombre: 'Ezequiel Olmedo',
-    texto: 'Excelente atención y súper rápida la atención de los chicos que trabajan ahí.',
-  },
-  {
-    nombre: 'Rodrigo Osorio',
-    texto: '¡Tienen de todo, excelentes precios!',
-  },
-  {
-    nombre: 'Lucio Schwerdt',
-    texto: 'Muchos repuestos de todo tipo de vehículos, ¡recomendable!',
-  },
-  {
-    nombre: 'Hernán Grandjean',
-    texto: 'Gracias a los chicos de King Kong Autopartes. Excelente atención.',
-  },
-  {
-    nombre: 'Rafa Prieto',
-    texto: 'Tienen muchos repuestos y a un muy buen precio 👍',
-  },
-]
 
 function Logo({ className = '' }: { className?: string }) {
   return (
@@ -148,6 +130,317 @@ function Logo({ className = '' }: { className?: string }) {
   )
 }
 
+// ─── SearchWizard ─────────────────────────────────────────────────────────────
+
+type WizardMode = 'by-brand' | 'by-part'
+type WizardStep = 0 | 1 | 2 | 3
+
+function buildWspLink(marca: string | null, modelo: string | null, pieza: string | null): string {
+  let msg = 'Hola! Estoy buscando'
+  if (pieza) msg += ` ${pieza.toLowerCase()}`
+  if (marca && modelo) msg += ` para un ${marca} ${modelo}`
+  else if (marca) msg += ` para un ${marca}`
+  msg += '. ¿Tienen disponible?'
+  return `${WSP.agustin.link}?text=${encodeURIComponent(msg)}`
+}
+
+function SearchWizard() {
+  const [mode, setMode] = useState<WizardMode>('by-brand')
+  const [step, setStep] = useState<WizardStep>(0)
+  const [marca, setMarca] = useState<string | null>(null)
+  const [modelo, setModelo] = useState<string | null>(null)
+  const [pieza, setPieza] = useState<string | null>(null)
+
+  function reset() {
+    setStep(0)
+    setMarca(null)
+    setModelo(null)
+    setPieza(null)
+  }
+
+  function switchMode(m: WizardMode) {
+    setMode(m)
+    reset()
+  }
+
+  // ── Mode: by-brand ──────────────────────────────────────────────────────────
+  function pickMarca(m: string) {
+    setMarca(m)
+    setStep(1)
+  }
+
+  function pickModelo(m: string) {
+    setModelo(m)
+    setStep(2)
+  }
+
+  function pickPieza(p: string) {
+    setPieza(p)
+    // redirect immediately
+    window.open(buildWspLink(marca, modelo, p), '_blank', 'noopener,noreferrer')
+  }
+
+  // ── Mode: by-part ───────────────────────────────────────────────────────────
+  function pickPiezaFirst(p: string) {
+    setPieza(p)
+    setStep(1)
+  }
+
+  function pickMarcaSecond(m: string) {
+    setMarca(m)
+    setStep(2)
+  }
+
+  function pickModeloFinal(m: string) {
+    window.open(buildWspLink(marca, m, pieza), '_blank', 'noopener,noreferrer')
+  }
+
+  // ── "Otro" fallbacks ─────────────────────────────────────────────────────────
+  function handleOtro() {
+    const otroMsg =
+      pieza
+        ? `Hola! Estoy buscando ${pieza.toLowerCase()} para un auto que no está en la lista. ¿Me podés ayudar?`
+        : marca
+        ? `Hola! Tengo un ${marca} y necesito un repuesto pero no encuentro el modelo. ¿Me podés ayudar?`
+        : 'Hola! Necesito un repuesto pero no encuentro mi auto en la lista. ¿Me podés ayudar?'
+    window.open(`${WSP.agustin.link}?text=${encodeURIComponent(otroMsg)}`, '_blank', 'noopener,noreferrer')
+  }
+
+  const gridBtn = 'group border border-black/15 p-3 sm:p-4 text-center hover:border-[#ef78ba] hover:bg-[#fef6fb] transition-all cursor-pointer select-none'
+
+  function Breadcrumb() {
+    const parts: string[] = []
+    if (mode === 'by-brand') {
+      if (marca) parts.push(marca)
+      if (modelo) parts.push(modelo)
+    } else {
+      if (pieza) parts.push(pieza)
+      if (marca) parts.push(marca)
+    }
+    if (!parts.length) return null
+    return (
+      <div className="flex items-center gap-2 text-sm text-black/50 mb-5 flex-wrap">
+        <button onClick={reset} className="hover:text-[#ef78ba] transition-colors font-semibold">
+          Inicio
+        </button>
+        {parts.map((p, i) => (
+          <span key={i} className="flex items-center gap-2">
+            <ChevronRight className="w-3 h-3" />
+            <span className={i === parts.length - 1 ? 'text-[#111114] font-bold' : ''}>{p}</span>
+          </span>
+        ))}
+      </div>
+    )
+  }
+
+  // ── Step titles ──────────────────────────────────────────────────────────────
+  function getStepTitle(): string {
+    if (mode === 'by-brand') {
+      if (step === 0) return '¿De qué marca es tu auto?'
+      if (step === 1) return `¿Cuál es el modelo del ${marca}?`
+      if (step === 2) return `¿Qué pieza necesitás para el ${marca} ${modelo}?`
+    } else {
+      if (step === 0) return '¿Qué pieza estás buscando?'
+      if (step === 1) return `¿De qué marca es el auto con ${pieza?.toLowerCase()}?`
+      if (step === 2) return `¿Cuál es el modelo del ${marca}?`
+    }
+    return ''
+  }
+
+  return (
+    <section className="bg-white border-b border-black/10">
+      <div className="max-w-6xl mx-auto px-4 py-16">
+        {/* Header */}
+        <div className="text-center mb-10">
+          <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">BUSCADOR INTERACTIVO</div>
+          <h2 className="font-display text-3xl sm:text-4xl uppercase">
+            Encontrá tu repuesto en <span className="kk-pink">2 pasos</span>
+          </h2>
+          <p className="mt-3 text-black/55 max-w-lg mx-auto">
+            Seleccioná y te llevamos directo al WhatsApp con la consulta lista.
+          </p>
+        </div>
+
+        {/* Mode tabs */}
+        <div className="flex border border-black/15 p-1 max-w-md mx-auto mb-8">
+          <button
+            onClick={() => switchMode('by-brand')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-bold transition-all ${
+              mode === 'by-brand' ? 'bg-[#111114] text-white' : 'text-black/50 hover:text-black'
+            }`}
+          >
+            <Car className="w-4 h-4" /> Por marca de auto
+          </button>
+          <button
+            onClick={() => switchMode('by-part')}
+            className={`flex-1 flex items-center justify-center gap-2 py-2.5 text-sm font-bold transition-all ${
+              mode === 'by-part' ? 'bg-[#111114] text-white' : 'text-black/50 hover:text-black'
+            }`}
+          >
+            <Settings className="w-4 h-4" /> Por pieza
+          </button>
+        </div>
+
+        {/* Wizard body */}
+        <div className="border border-black/10 p-6 sm:p-8">
+          {/* Step indicator */}
+          <div className="flex items-center gap-2 mb-6">
+            {[0, 1, 2].map((s) => (
+              <span
+                key={s}
+                className={`inline-flex items-center justify-center w-6 h-6 text-xs font-bold transition-all ${
+                  s < step ? 'bg-[#ef78ba] text-[#111114]' : s === step ? 'bg-[#111114] text-white' : 'bg-black/10 text-black/40'
+                }`}
+              >
+                {s < step ? '✓' : s + 1}
+              </span>
+            ))}
+            <span className="ml-2 text-xs text-black/40 font-semibold tracking-wide">PASO {step + 1} DE {mode === 'by-brand' ? 3 : 3}</span>
+            {step > 0 && (
+              <button
+                onClick={() => {
+                  if (step === 1) reset()
+                  else if (step === 2 && mode === 'by-brand') { setStep(1); setModelo(null) }
+                  else if (step === 2 && mode === 'by-part') { setStep(1); setMarca(null) }
+                }}
+                className="ml-auto flex items-center gap-1 text-xs text-black/50 hover:text-[#ef78ba] font-semibold transition-colors"
+              >
+                <ChevronLeft className="w-3 h-3" /> Volver
+              </button>
+            )}
+          </div>
+
+          <Breadcrumb />
+
+          {/* Step title */}
+          <h3 className="font-display text-xl sm:text-2xl uppercase mb-6">{getStepTitle()}</h3>
+
+          {/* ── BY BRAND ── */}
+          {mode === 'by-brand' && step === 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {MARCAS.map((m) => (
+                <button key={m} className={gridBtn} onClick={() => pickMarca(m)}>
+                  <span className="font-display text-sm tracking-wide group-hover:text-[#ef78ba] transition-colors block">
+                    {m}
+                  </span>
+                </button>
+              ))}
+              <button
+                onClick={handleOtro}
+                className="col-span-2 sm:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+              >
+                No encuentro mi marca → Escribir por WhatsApp
+              </button>
+            </div>
+          )}
+
+          {mode === 'by-brand' && step === 1 && marca && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(MODELOS[marca] ?? []).map((m) => (
+                <button key={m} className={gridBtn} onClick={() => pickModelo(m)}>
+                  <span className="font-display text-sm tracking-wide group-hover:text-[#ef78ba] transition-colors block">
+                    {m}
+                  </span>
+                </button>
+              ))}
+              <button
+                onClick={handleOtro}
+                className="col-span-2 sm:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+              >
+                No encuentro mi modelo → Escribir por WhatsApp
+              </button>
+            </div>
+          )}
+
+          {mode === 'by-brand' && step === 2 && marca && modelo && (
+            <>
+              <p className="text-sm text-black/50 mb-5">
+                Tocá la pieza y te abrimos WhatsApp con la consulta lista para {marca} {modelo}.
+              </p>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+                {PARTES.map((p) => (
+                  <button
+                    key={p}
+                    className="group border border-black/15 p-4 text-left hover:border-[#ef78ba] hover:bg-[#fef6fb] transition-all"
+                    onClick={() => pickPieza(p)}
+                  >
+                    <span className="font-display text-sm leading-snug block group-hover:text-[#ef78ba] transition-colors">{p}</span>
+                    <span className="mt-2 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                      IR A WS <ChevronRight className="w-3 h-3" />
+                    </span>
+                  </button>
+                ))}
+                <button
+                  onClick={handleOtro}
+                  className="col-span-2 sm:col-span-3 lg:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+                >
+                  No encuentro la pieza → Escribir por WhatsApp
+                </button>
+              </div>
+            </>
+          )}
+
+          {/* ── BY PART ── */}
+          {mode === 'by-part' && step === 0 && (
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
+              {PARTES.map((p) => (
+                <button key={p} className={gridBtn} onClick={() => pickPiezaFirst(p)}>
+                  <span className="font-display text-sm leading-snug block group-hover:text-[#ef78ba] transition-colors">{p}</span>
+                </button>
+              ))}
+              <button
+                onClick={handleOtro}
+                className="col-span-2 sm:col-span-3 lg:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+              >
+                Busco algo que no está en la lista → Escribir por WhatsApp
+              </button>
+            </div>
+          )}
+
+          {mode === 'by-part' && step === 1 && pieza && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {MARCAS.map((m) => (
+                <button key={m} className={gridBtn} onClick={() => pickMarcaSecond(m)}>
+                  <span className="font-display text-sm tracking-wide group-hover:text-[#ef78ba] transition-colors block">
+                    {m}
+                  </span>
+                </button>
+              ))}
+              <button
+                onClick={handleOtro}
+                className="col-span-2 sm:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+              >
+                No encuentro mi marca → Escribir por WhatsApp
+              </button>
+            </div>
+          )}
+
+          {mode === 'by-part' && step === 2 && pieza && marca && (
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {(MODELOS[marca] ?? []).map((m) => (
+                <button key={m} className={gridBtn} onClick={() => pickModeloFinal(m)}>
+                  <span className="font-display text-sm tracking-wide group-hover:text-[#ef78ba] transition-colors block">{m}</span>
+                  <span className="mt-2 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-1">
+                    IR A WS <ChevronRight className="w-3 h-3" />
+                  </span>
+                </button>
+              ))}
+              <button
+                onClick={handleOtro}
+                className="col-span-2 sm:col-span-4 border border-dashed border-black/20 p-3 text-sm text-black/50 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-all font-semibold"
+              >
+                No encuentro mi modelo → Escribir por WhatsApp
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// ─── Main App ─────────────────────────────────────────────────────────────────
+
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-[#111114]">
@@ -155,7 +448,7 @@ export default function App() {
       <div className="kk-bg-pink text-[#111114] text-xs sm:text-sm font-semibold">
         <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1">
           <span className="inline-flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" /> Lunes a viernes · 8 a 16 hs de corrido
+            <Clock className="w-3.5 h-3.5" /> Lunes a viernes · 8 a 16 hs
           </span>
           <span className="inline-flex items-center gap-1.5">
             <Truck className="w-3.5 h-3.5" /> Envíos a todo el país
@@ -171,12 +464,11 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Logo />
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
-            <a href="#marcas" className="hover:text-[#ef78ba]">Marcas</a>
-            <a href="#repuestos" className="hover:text-[#ef78ba]">Repuestos</a>
-            <a href="#confianza" className="hover:text-[#ef78ba]">Confían en nosotros</a>
-            <a href="#como" className="hover:text-[#ef78ba]">Cómo comprar</a>
-            <a href="#opiniones" className="hover:text-[#ef78ba]">Opiniones</a>
-            <a href="#contacto" className="hover:text-[#ef78ba]">Contacto</a>
+            <a href="#buscar"    className="hover:text-[#ef78ba] transition-colors">Buscar repuesto</a>
+            <a href="#confianza" className="hover:text-[#ef78ba] transition-colors">Quiénes confían</a>
+            <a href="#como"      className="hover:text-[#ef78ba] transition-colors">Cómo comprar</a>
+            <a href="#opiniones" className="hover:text-[#ef78ba] transition-colors">Opiniones</a>
+            <a href="#contacto"  className="hover:text-[#ef78ba] transition-colors">Contacto</a>
           </nav>
           <a
             href={`${WSP.agustin.link}?text=${MSG}`}
@@ -206,23 +498,28 @@ export default function App() {
             <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
               Stock real que se renueva todas las semanas, todas las marcas y modelos. Consultás
               por WhatsApp, te mandamos fotos y precio de la pieza en el momento, y te la enviamos
-              a cualquier punto del país. Atendemos particulares, talleres y aseguradoras.
+              a cualquier punto del país.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <WspButton link={WSP.agustin.link}>Consultar disponibilidad</WspButton>
               <a
-                href="#repuestos"
+                href="#buscar"
+                className="inline-flex items-center gap-2 px-6 py-3.5 font-bold text-base tracking-wide bg-[#ef78ba] text-[#111114] hover:-translate-y-0.5 hover:shadow-lg transition-all"
+              >
+                <Search className="w-4 h-4" /> Buscar mi repuesto
+              </a>
+              <a
+                href={`${WSP.agustin.link}?text=${MSG}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 font-bold border border-white/30 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
               >
-                Ver qué tenemos <ChevronRight className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" /> WhatsApp directo
               </a>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
               <div className="flex items-center gap-2">
                 <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />
-                  ))}
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />)}
                 </div>
                 <span className="font-bold">4,7</span>
                 <span className="text-white/60">en Google</span>
@@ -260,44 +557,20 @@ export default function App() {
           <div className="kk-marquee flex whitespace-nowrap w-max">
             {[...PARTES, ...PARTES].map((p, i) => (
               <span key={i} className="font-display text-sm tracking-widest mx-6 text-white/50">
-                {p} <span className="kk-pink mx-2">•</span>
+                {p.toUpperCase()} <span className="kk-pink mx-2">•</span>
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Marcas */}
-      <section id="marcas" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center max-w-2xl mx-auto mb-10">
-          <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">TODAS LAS MARCAS, TODOS LOS MODELOS</div>
-          <h2 className="font-display text-3xl sm:text-4xl uppercase">¿De qué auto es tu repuesto?</h2>
-          <p className="mt-4 text-black/60">
-            Nafteros, gasoleros y diésel. Autos, camionetas y utilitarios de todos los años.
-          </p>
-        </div>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          {MARCAS.map((m) => (
-            <a
-              key={m}
-              href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Estoy buscando un repuesto para un ${m}.`)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group border border-black/10 px-5 py-4 text-center hover:border-[#ef78ba] hover:bg-[#faf3f8] transition-colors"
-            >
-              <span className="font-display text-sm sm:text-base tracking-wide group-hover:text-[#ef78ba] transition-colors">
-                {m.toUpperCase()}
-              </span>
-            </a>
-          ))}
-        </div>
-        <p className="mt-5 text-center text-sm text-black/50">
-          ¿Tu marca no está en la lista? Preguntá igual — ingresan vehículos todas las semanas.
-        </p>
-      </section>
+      {/* ── Buscador interactivo ── */}
+      <div id="buscar">
+        <SearchWizard />
+      </div>
 
       {/* Franja legal compacta */}
-      <section id="legal" className="kk-bg-pink">
+      <section className="kk-bg-pink">
         <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-4 text-[#111114]">
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-8 h-8 shrink-0" />
@@ -319,16 +592,16 @@ export default function App() {
         </div>
       </section>
 
-      {/* Repuestos */}
-      <section id="repuestos" className="kk-dark text-white py-20">
+      {/* Repuestos (sección reducida — el wizard ya cubre esto) */}
+      <section id="repuestos" className="kk-dark text-white py-16">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
             <div>
               <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">STOCK PERMANENTE</div>
-              <h2 className="font-display text-3xl sm:text-4xl uppercase">¿Qué estás buscando?</h2>
+              <h2 className="font-display text-3xl sm:text-4xl uppercase">Qué tenemos siempre</h2>
               <p className="mt-3 text-white/70 max-w-xl">
-                Ingresan vehículos todas las semanas: nafteros, gasoleros y diésel, todas las marcas
-                y modelos. Si no lo ves acá, igual preguntá — el stock cambia todos los días.
+                Todas las semanas ingresan autos nuevos. Si no lo ves acá, preguntá igual — el
+                stock cambia todos los días.
               </p>
             </div>
             <WspButton link={WSP.mauro.link}>Preguntar por una pieza</WspButton>
@@ -340,7 +613,7 @@ export default function App() {
                 href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Quería consultar si tienen ${p.toLowerCase()} disponibles.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border border-white/15 p-5 hover:border-[#ef78ba] hover:bg-white/5 transition-colors"
+                className="group border border-white/15 p-5 hover:border-[#ef78ba] hover:bg-white/5 transition-all"
               >
                 <div className="font-display text-sm sm:text-base leading-snug">{p}</div>
                 <div className="mt-3 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
@@ -349,9 +622,6 @@ export default function App() {
               </a>
             ))}
           </div>
-          <p className="mt-6 text-sm text-white/50">
-            ¿No ves lo que buscás? El stock cambia todos los días — escribinos y lo revisamos en el momento.
-          </p>
         </div>
       </section>
 
@@ -366,12 +636,12 @@ export default function App() {
         <div className="grid md:grid-cols-4 gap-6">
           {[
             { Icon: MessageCircle, t: 'Escribinos', d: 'Mandanos por WhatsApp qué pieza necesitás, marca, modelo y año del vehículo.' },
-            { Icon: Search, t: 'La buscamos', d: 'Revisamos el stock en el momento y te mandamos fotos y precio de la pieza real.' },
-            { Icon: PackageCheck, t: 'La preparamos', d: 'Desmontamos, probamos y embalamos tu repuesto listo para viajar.' },
-            { Icon: Truck, t: 'Te llega', d: 'Retirás en Eucaliptus 4036 o te lo enviamos por expreso a todo el país.' },
+            { Icon: Search,        t: 'La buscamos', d: 'Revisamos el stock en el momento y te mandamos fotos y precio de la pieza real.' },
+            { Icon: PackageCheck,  t: 'La preparamos', d: 'Desmontamos, probamos y embalamos tu repuesto listo para viajar.' },
+            { Icon: Truck,         t: 'Te llega', d: 'Retirás en Eucaliptus 4036 o te lo enviamos por expreso a todo el país.' },
           ].map(({ Icon, t, d }, i) => (
             <div key={t} className="relative border border-black/10 p-6 pt-8">
-              <div className="absolute -top-4 left-6 kk-bg-pink w-8 h-8 flex items-center justify-center font-display text-sm">
+              <div className="absolute -top-4 left-6 kk-bg-pink w-8 h-8 flex items-center justify-center font-display text-sm text-[#111114]">
                 {i + 1}
               </div>
               <Icon className="w-7 h-7 kk-pink mb-4" />
@@ -394,8 +664,8 @@ export default function App() {
           </div>
           <div className="grid md:grid-cols-3 gap-5 mb-12">
             {[
-              { Icon: Wrench, t: 'Talleres mecánicos', d: 'De Coronel Suárez y toda la zona nos compran repuestos todos los días para sus clientes.' },
-              { Icon: ShieldCheck, t: 'Aseguradoras', d: 'Trabajamos con compañías de seguros en la compra de vehículos dados de baja y la provisión de repuestos.' },
+              { Icon: Wrench,       t: 'Talleres mecánicos',       d: 'De Coronel Suárez y toda la zona nos compran repuestos todos los días para sus clientes.' },
+              { Icon: ShieldCheck,  t: 'Aseguradoras',             d: 'Trabajamos con compañías de seguros en la compra de vehículos dados de baja y la provisión de repuestos.' },
               { Icon: CheckCircle2, t: 'Particulares de todo el país', d: 'Miles de clientes que consultaron por WhatsApp y recibieron su repuesto en la puerta de su casa.' },
             ].map(({ Icon, t, d }) => (
               <div key={t} className="border border-white/15 p-7 text-center">
@@ -410,7 +680,7 @@ export default function App() {
           </div>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
             {ASEGURADORAS.map((a) => (
-              <span key={a} className="font-display text-sm sm:text-base text-white/40 hover:text-white/80 transition-colors tracking-wide">
+              <span key={a} className="font-display text-sm sm:text-base text-white/40 hover:text-white/80 transition-colors tracking-wide cursor-default">
                 {a.toUpperCase()}
               </span>
             ))}
@@ -428,9 +698,7 @@ export default function App() {
             </div>
             <div className="flex items-center gap-3">
               <div className="flex">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-[#ef78ba] text-[#ef78ba]" />
-                ))}
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-5 h-5 fill-[#ef78ba] text-[#ef78ba]" />)}
               </div>
               <div className="text-sm">
                 <span className="font-display text-lg">4,7</span>{' '}
@@ -444,11 +712,9 @@ export default function App() {
             {RESEÑAS.map((r) => (
               <div key={r.nombre} className="bg-white border border-black/10 p-6">
                 <div className="flex mb-3">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />
-                  ))}
+                  {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />)}
                 </div>
-                <p className="text-[15px] leading-relaxed text-black/80">“{r.texto}”</p>
+                <p className="text-[15px] leading-relaxed text-black/80">"{r.texto}"</p>
                 <div className="mt-4 text-sm font-bold">{r.nombre}</div>
                 <div className="text-xs text-black/50">Reseña de Google</div>
               </div>
@@ -457,7 +723,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contacto / equipo */}
+      {/* Contacto */}
       <section id="contacto" className="kk-dark text-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
@@ -502,7 +768,6 @@ export default function App() {
                     <div>
                       <div className="font-bold">Eucaliptus 4036, Coronel Suárez</div>
                       <div className="text-sm text-black/60">Provincia de Buenos Aires (B7540)</div>
-                      <div className="text-sm text-black/60">Entrada accesible para personas con movilidad reducida.</div>
                     </div>
                   </div>
                   <div className="flex gap-3">
@@ -523,7 +788,7 @@ export default function App() {
                     <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
                     <div>
                       <div className="font-bold">Formas de pago</div>
-                      <div className="text-sm text-black/60">Efectivo, transferencia y Mercado Pago. Consultá por otras opciones.</div>
+                      <div className="text-sm text-black/60">Efectivo, transferencia y Mercado Pago.</div>
                     </div>
                   </div>
                 </div>
