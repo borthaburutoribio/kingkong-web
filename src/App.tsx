@@ -64,6 +64,40 @@ const PARTES = [
   'ELECTROVENTILADORES',
 ]
 
+const MARCAS = [
+  'Volkswagen',
+  'Chevrolet',
+  'Ford',
+  'Fiat',
+  'Renault',
+  'Peugeot',
+  'Citroën',
+  'Toyota',
+  'Honda',
+  'Nissan',
+  'Suzuki',
+  'Jeep',
+  'Chery',
+  'Hyundai',
+  'Kia',
+  'Mercedes-Benz',
+]
+
+const ASEGURADORAS = [
+  'Sancor Seguros',
+  'Federación Patronal',
+  'La Segunda',
+  'Seguros Rivadavia',
+  'San Cristóbal',
+  'Mercantil Andina',
+  'Provincia Seguros',
+  'La Caja',
+  'Allianz',
+  'Zurich',
+  'Orbis Seguros',
+  'Berkley',
+]
+
 const RESEÑAS = [
   {
     nombre: 'Alejandro Besano',
@@ -133,8 +167,9 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Logo />
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
-            <a href="#legal" className="hover:text-[#ef78ba]">Por qué legal</a>
+            <a href="#marcas" className="hover:text-[#ef78ba]">Marcas</a>
             <a href="#repuestos" className="hover:text-[#ef78ba]">Repuestos</a>
+            <a href="#confianza" className="hover:text-[#ef78ba]">Confían en nosotros</a>
             <a href="#como" className="hover:text-[#ef78ba]">Cómo comprar</a>
             <a href="#opiniones" className="hover:text-[#ef78ba]">Opiniones</a>
             <a href="#contacto" className="hover:text-[#ef78ba]">Contacto</a>
@@ -157,17 +192,17 @@ export default function App() {
           <div>
             <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6">
               <BadgeCheck className="w-4 h-4" />
-              DESARMADERO OFICIAL · INSCRIPTO EN RUDAC / DNRPA
+              PRIMER DESARMADERO OFICIAL DE CORONEL SUÁREZ
             </div>
             <h1 className="font-display text-4xl sm:text-6xl leading-[1.02] uppercase">
               El repuesto que buscás,{' '}
-              <span className="kk-pink">legal</span> y con{' '}
-              <span className="kk-underline">factura</span>.
+              <span className="kk-pink">hoy</span> y al{' '}
+              <span className="kk-underline">mejor precio</span>.
             </h1>
             <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
-              Somos el primer desarmadero oficial de Coronel Suárez. Cada autoparte sale
-              identificada con oblea RUDAC, factura y respaldo. Consultás, la buscamos en el
-              momento y te la enviamos a cualquier punto del país.
+              Stock real que se renueva todas las semanas, todas las marcas y modelos. Consultás
+              por WhatsApp, te mandamos fotos y precio de la pieza en el momento, y te la enviamos
+              a cualquier punto del país. Atendemos particulares, talleres y aseguradoras.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <WspButton link={WSP.agustin.link}>Consultar disponibilidad</WspButton>
@@ -196,13 +231,13 @@ export default function App() {
 
           {/* Tarjeta de confianza */}
           <div className="bg-white text-[#111114] p-7 border-t-8 border-[#ef78ba] shadow-2xl">
-            <div className="font-display text-xl uppercase mb-5">Compra segura</div>
+            <div className="font-display text-xl uppercase mb-5">Comprá tranquilo</div>
             <ul className="space-y-4 text-[15px]">
               {[
-                ['Oblea RUDAC en cada pieza', 'Trazabilidad oficial: sabés de dónde sale tu repuesto.'],
-                ['Factura en todas las ventas', 'Comprobante legal para vos y para tu taller.'],
-                ['Inscriptos en DNRPA', 'Registro de desarmaderos N° 3566 — verificable online.'],
+                ['Ves la pieza antes de pagar', 'Te mandamos fotos y video de la pieza real por WhatsApp.'],
+                ['Piezas revisadas y probadas', 'Desarmamos con cuidado y probamos cada pieza antes de venderla.'],
                 ['Envíos a todo el país', 'Despachamos por el expreso que te quede mejor.'],
+                ['Origen garantizado', 'Desarmadero oficial: cada pieza con su identificación y comprobante.'],
               ].map(([t, d]) => (
                 <li key={t} className="flex gap-3">
                   <CheckCircle2 className="w-5 h-5 text-[#ef78ba] shrink-0 mt-0.5" />
@@ -228,48 +263,55 @@ export default function App() {
         </div>
       </section>
 
-      {/* Por qué legal */}
-      <section id="legal" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">LO QUE NOS DIFERENCIA</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase leading-tight">
-              ¿Por qué importa que un desarmadero sea <span className="kk-underline">legal</span>?
-            </h2>
-            <p className="mt-5 text-black/70 leading-relaxed">
-              Una autoparte sin papeles puede venir de cualquier lado, y eso es un problema tuyo el
-              día que la instalás. En King Kong cada vehículo ingresa con documentación, se da de
-              baja oficialmente y cada pieza se registra con su oblea RUDAC. Eso significa que tu
-              repuesto tiene origen comprobable, sirve para verificaciones y no te trae dolores de
-              cabeza.
-            </p>
-            <p className="mt-4 text-black/70 leading-relaxed">
-              Podés verificarnos vos mismo en el listado oficial de desarmaderos inscriptos de la{' '}
-              <a
-                href="https://www.dnrpa.gov.ar/consulta_inscriptos_web/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-bold kk-pink underline underline-offset-4"
-              >
-                DNRPA (Argentina.gob.ar)
-              </a>
-              : figuramos como <strong>King Kong Autopartes Coronel Suárez SAS, registro N° 3566</strong>.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 gap-4">
-            {[
-              { Icon: ShieldCheck, t: 'Habilitación oficial', d: 'Desarmadero inscripto y habilitado. No trabajamos en negro.' },
-              { Icon: FileCheck, t: 'Oblea + factura', d: 'Cada pieza identificada y facturada. Motores con baja y documentación.' },
-              { Icon: Search, t: 'Trazabilidad real', d: 'Origen de cada vehículo registrado ante DNRPA. Verificable.' },
-              { Icon: Wrench, t: 'Piezas probadas', d: 'Desarmamos con cuidado y revisamos cada pieza antes de venderla.' },
-            ].map(({ Icon, t, d }) => (
-              <div key={t} className="border border-black/10 p-6 hover:border-[#ef78ba] transition-colors">
-                <Icon className="w-7 h-7 kk-pink mb-4" />
-                <div className="font-display text-base uppercase mb-2">{t}</div>
-                <div className="text-sm text-black/60 leading-relaxed">{d}</div>
+      {/* Marcas */}
+      <section id="marcas" className="max-w-6xl mx-auto px-4 py-20">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">TODAS LAS MARCAS, TODOS LOS MODELOS</div>
+          <h2 className="font-display text-3xl sm:text-4xl uppercase">¿De qué auto es tu repuesto?</h2>
+          <p className="mt-4 text-black/60">
+            Nafteros, gasoleros y diésel. Autos, camionetas y utilitarios de todos los años.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {MARCAS.map((m) => (
+            <a
+              key={m}
+              href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Estoy buscando un repuesto para un ${m}.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-black/10 px-5 py-4 text-center hover:border-[#ef78ba] hover:bg-[#faf3f8] transition-colors"
+            >
+              <span className="font-display text-sm sm:text-base tracking-wide group-hover:text-[#ef78ba] transition-colors">
+                {m.toUpperCase()}
+              </span>
+            </a>
+          ))}
+        </div>
+        <p className="mt-5 text-center text-sm text-black/50">
+          ¿Tu marca no está en la lista? Preguntá igual — ingresan vehículos todas las semanas.
+        </p>
+      </section>
+
+      {/* Franja legal compacta */}
+      <section id="legal" className="kk-bg-pink">
+        <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-4 text-[#111114]">
+          <div className="flex items-center gap-3">
+            <ShieldCheck className="w-8 h-8 shrink-0" />
+            <div>
+              <div className="font-display text-base uppercase">Desarmadero oficial, sin vueltas</div>
+              <div className="text-sm opacity-80">
+                Inscriptos en DNRPA (registro N° 3566). Piezas identificadas y con comprobante.
               </div>
-            ))}
+            </div>
           </div>
+          <a
+            href="https://www.dnrpa.gov.ar/consulta_inscriptos_web/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-[#111114] text-white px-5 py-3 font-bold text-sm hover:opacity-85 transition-opacity"
+          >
+            <FileCheck className="w-4 h-4" /> Verificalo en Argentina.gob.ar
+          </a>
         </div>
       </section>
 
@@ -304,7 +346,7 @@ export default function App() {
             ))}
           </div>
           <p className="mt-6 text-sm text-white/50">
-            Motores con factura, oblea y documentación para hacer el cambio en el registro.
+            ¿No ves lo que buscás? El stock cambia todos los días — escribinos y lo revisamos en el momento.
           </p>
         </div>
       </section>
@@ -321,7 +363,7 @@ export default function App() {
           {[
             { Icon: MessageCircle, t: 'Escribinos', d: 'Mandanos por WhatsApp qué pieza necesitás, marca, modelo y año del vehículo.' },
             { Icon: Search, t: 'La buscamos', d: 'Revisamos el stock en el momento y te mandamos fotos y precio de la pieza real.' },
-            { Icon: PackageCheck, t: 'La preparamos', d: 'Desmontamos, probamos y embalamos tu repuesto con su oblea y factura.' },
+            { Icon: PackageCheck, t: 'La preparamos', d: 'Desmontamos, probamos y embalamos tu repuesto listo para viajar.' },
             { Icon: Truck, t: 'Te llega', d: 'Retirás en Eucaliptus 4036 o te lo enviamos por expreso a todo el país.' },
           ].map(({ Icon, t, d }, i) => (
             <div key={t} className="relative border border-black/10 p-6 pt-8">
@@ -336,6 +378,39 @@ export default function App() {
         </div>
         <div className="mt-10 text-center">
           <WspButton link={WSP.agustin.link}>Empezar mi consulta</WspButton>
+        </div>
+      </section>
+
+      {/* Quiénes confían */}
+      <section id="confianza" className="kk-dark text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">NO SOMOS NUEVOS EN ESTO</div>
+            <h2 className="font-display text-3xl sm:text-4xl uppercase">Quiénes ya confían en nosotros</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-5 mb-12">
+            {[
+              { Icon: Wrench, t: 'Talleres mecánicos', d: 'De Coronel Suárez y toda la zona nos compran repuestos todos los días para sus clientes.' },
+              { Icon: ShieldCheck, t: 'Aseguradoras', d: 'Trabajamos con compañías de seguros en la compra de vehículos dados de baja y la provisión de repuestos.' },
+              { Icon: CheckCircle2, t: 'Particulares de todo el país', d: 'Miles de clientes que consultaron por WhatsApp y recibieron su repuesto en la puerta de su casa.' },
+            ].map(({ Icon, t, d }) => (
+              <div key={t} className="border border-white/15 p-7 text-center">
+                <Icon className="w-8 h-8 kk-pink mx-auto mb-4" />
+                <div className="font-display text-lg uppercase mb-2">{t}</div>
+                <div className="text-sm text-white/60 leading-relaxed">{d}</div>
+              </div>
+            ))}
+          </div>
+          <div className="text-center text-xs font-bold tracking-[0.25em] text-white/50 mb-6">
+            COMPAÑÍAS DE SEGUROS CON LAS QUE OPERAMOS
+          </div>
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+            {ASEGURADORAS.map((a) => (
+              <span key={a} className="font-display text-sm sm:text-base text-white/40 hover:text-white/80 transition-colors tracking-wide">
+                {a.toUpperCase()}
+              </span>
+            ))}
+          </div>
         </div>
       </section>
 
