@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import {
   Phone,
   MapPin,
@@ -13,17 +12,10 @@ import {
   PackageCheck,
   Wrench,
   ChevronRight,
-  ChevronLeft,
   BadgeCheck,
   Banknote,
-  Car,
-  HelpCircle,
 } from 'lucide-react'
 import logoImg from './assets/logo.jpg'
-import fotoPredio from './assets/fotos/predio.jpg'
-import fotoMotores from './assets/fotos/motores.jpg'
-import fotoCajas from './assets/fotos/cajas.jpg'
-import fotoDesarme from './assets/fotos/desarme.jpg'
 
 function Instagram({ className = '' }: { className?: string }) {
   return (
@@ -45,41 +37,53 @@ const MSG = encodeURIComponent('Hola! Vi la página web de King Kong Autopartes 
 
 const MAPS = 'https://www.google.com/maps/search/?api=1&query=King+Kong+Autopartes+Eucaliptus+4036+Coronel+Suarez'
 
-const PIEZAS: { label: string; msg: string }[] = [
-  { label: 'MOTORES', msg: 'un motor' },
-  { label: 'CAJAS DE VELOCIDAD', msg: 'una caja de velocidad' },
-  { label: 'PUERTAS', msg: 'una puerta' },
-  { label: 'COMPUTADORAS (ECU)', msg: 'una computadora (ECU)' },
-  { label: 'ALTERNADORES', msg: 'un alternador' },
-  { label: 'BOMBAS DE NAFTA', msg: 'una bomba de nafta' },
-  { label: 'COMPRESORES', msg: 'un compresor' },
-  { label: 'TROMPAS Y PARAGOLPES', msg: 'una trompa o paragolpes' },
-  { label: 'ÓPTICAS', msg: 'una óptica' },
-  { label: 'TRENES Y EJES', msg: 'un tren o eje' },
-  { label: 'ASIENTOS E INTERIORES', msg: 'asientos o piezas de interior' },
-  { label: 'ELECTROVENTILADORES', msg: 'un electroventilador' },
-]
-
-const MODELOS: Record<string, string[]> = {
-  Volkswagen: ['Gol', 'Gol Trend', 'Polo', 'Vento', 'Bora', 'Suran', 'Fox', 'Voyage', 'Up!', 'Amarok'],
-  Chevrolet: ['Corsa', 'Classic', 'Aveo', 'Onix', 'Prisma', 'Cruze', 'Agile', 'Spin', 'Tracker', 'S10'],
-  Ford: ['Fiesta', 'Focus', 'Ka', 'EcoSport', 'Ranger', 'Falcon', 'Mondeo', 'F-100'],
-  Fiat: ['Palio', 'Siena', 'Uno', 'Punto', 'Cronos', 'Strada', 'Toro', 'Qubo', 'Fiorino', 'Duna'],
-  Renault: ['Clio', 'Sandero', 'Logan', 'Mégane', 'Kangoo', 'Duster', 'Twingo', 'Fluence', 'R19'],
-  Peugeot: ['206', '207', '208', '306', '307', '308', '405', '408', 'Partner'],
-  Citroën: ['C3', 'C4', 'C4 Lounge', 'Berlingo', 'Xsara'],
-  Toyota: ['Hilux', 'Corolla', 'Etios', 'Yaris', 'SW4'],
-  Honda: ['Civic', 'Fit', 'City', 'CR-V', 'HR-V'],
-  Nissan: ['March', 'Versa', 'Sentra', 'Frontier', 'Kicks'],
-  Suzuki: ['Fun', 'Swift', 'Vitara', 'Grand Vitara'],
-  Jeep: ['Renegade', 'Compass', 'Grand Cherokee'],
-  Chery: ['QQ', 'Tiggo', 'Fulwin'],
-  Hyundai: ['i10', 'Accent', 'Tucson', 'Santa Fe', 'H1'],
-  Kia: ['Picanto', 'Rio', 'Cerato', 'Sportage'],
-  'Mercedes-Benz': ['Sprinter', 'Vito', 'Clase A', 'Clase C'],
+function WspButton({ link, children }: { link: string; children: React.ReactNode }) {
+  return (
+    <a
+      href={`${link}?text=${MSG}`}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-2 px-6 py-3.5 font-bold text-base tracking-wide transition-transform hover:-translate-y-0.5 bg-[#ef78ba] text-[#111114]"
+    >
+      <MessageCircle className="w-5 h-5" />
+      {children}
+    </a>
+  )
 }
 
-const MARCAS = Object.keys(MODELOS)
+const PARTES = [
+  'MOTORES',
+  'CAJAS DE VELOCIDAD',
+  'PUERTAS',
+  'COMPUTADORAS (ECU)',
+  'ALTERNADORES',
+  'BOMBAS DE NAFTA',
+  'COMPRESORES',
+  'TROMPAS Y PARAGOLPES',
+  'ÓPTICAS',
+  'TRENES Y EJES',
+  'ASIENTOS E INTERIORES',
+  'ELECTROVENTILADORES',
+]
+
+const MARCAS = [
+  'Volkswagen',
+  'Chevrolet',
+  'Ford',
+  'Fiat',
+  'Renault',
+  'Peugeot',
+  'Citroën',
+  'Toyota',
+  'Honda',
+  'Nissan',
+  'Suzuki',
+  'Jeep',
+  'Chery',
+  'Hyundai',
+  'Kia',
+  'Mercedes-Benz',
+]
 
 const ASEGURADORAS = [
   'Sancor Seguros',
@@ -124,24 +128,6 @@ const RESEÑAS = [
   },
 ]
 
-function abrirWhatsApp(texto: string) {
-  window.open(`${WSP.agustin.link}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener,noreferrer')
-}
-
-function WspButton({ link, children }: { link: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={`${link}?text=${MSG}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 px-6 py-3.5 font-bold text-base tracking-wide transition-transform hover:-translate-y-0.5 bg-[#ef78ba] text-[#111114]"
-    >
-      <MessageCircle className="w-5 h-5" />
-      {children}
-    </a>
-  )
-}
-
 function Logo({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
@@ -161,189 +147,6 @@ function Logo({ className = '' }: { className?: string }) {
     </div>
   )
 }
-
-/* ============ Buscador interactivo ============ */
-
-type GridItem = { key: string; label: string; sub?: string; otro?: boolean }
-
-function GridSelect({
-  items,
-  onPick,
-  dark,
-  final,
-}: {
-  items: GridItem[]
-  onPick: (key: string) => void
-  dark?: boolean
-  final?: boolean
-}) {
-  return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-      {items.map((it) => (
-        <button
-          key={it.key}
-          onClick={() => onPick(it.key)}
-          className={`group text-left p-5 border transition-colors cursor-pointer ${
-            dark
-              ? 'border-white/15 hover:border-[#ef78ba] hover:bg-white/5'
-              : 'border-black/10 hover:border-[#ef78ba] hover:bg-[#faf3f8]'
-          } ${it.otro ? (dark ? 'border-dashed border-white/30' : 'border-dashed border-black/25') : ''}`}
-        >
-          <div className="font-display text-sm sm:text-base leading-snug flex items-center gap-2">
-            {it.otro && <HelpCircle className="w-4 h-4 kk-pink shrink-0" />}
-            {it.label}
-          </div>
-          {it.sub && <div className={`mt-1 text-xs ${dark ? 'text-white/50' : 'text-black/50'}`}>{it.sub}</div>}
-          <div className="mt-3 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-            {final ? (
-              <>
-                <MessageCircle className="w-3.5 h-3.5" /> IR AL WHATSAPP
-              </>
-            ) : (
-              <>
-                ELEGIR <ChevronRight className="w-3 h-3" />
-              </>
-            )}
-          </div>
-        </button>
-      ))}
-    </div>
-  )
-}
-
-function Migas({
-  pasos,
-  onVolver,
-  dark,
-}: {
-  pasos: string[]
-  onVolver: () => void
-  dark?: boolean
-}) {
-  if (pasos.length === 0) return null
-  return (
-    <div className="flex flex-wrap items-center gap-2 mb-6">
-      <button
-        onClick={onVolver}
-        className={`inline-flex items-center gap-1 text-xs font-bold px-3 py-2 border transition-colors cursor-pointer ${
-          dark ? 'border-white/25 hover:border-[#ef78ba] hover:text-[#ef78ba]' : 'border-black/20 hover:border-[#ef78ba] hover:text-[#ef78ba]'
-        }`}
-      >
-        <ChevronLeft className="w-3.5 h-3.5" /> VOLVER
-      </button>
-      {pasos.map((p) => (
-        <span key={p} className="kk-bg-pink text-[#111114] text-xs font-bold px-3 py-2">
-          {p}
-        </span>
-      ))}
-    </div>
-  )
-}
-
-/** Camino 1: marca → modelo → pieza → WhatsApp */
-function BuscadorPorMarca() {
-  const [marca, setMarca] = useState<string | null>(null)
-  const [modelo, setModelo] = useState<string | null>(null)
-
-  const volver = () => {
-    if (modelo) setModelo(null)
-    else setMarca(null)
-  }
-
-  const elegirPieza = (key: string) => {
-    const pieza = PIEZAS.find((p) => p.label === key)
-    const piezaTxt = pieza ? pieza.msg : 'un repuesto (te cuento bien por acá)'
-    const autoTxt =
-      marca === 'OTRA'
-        ? 'mi auto (te paso marca y modelo por acá)'
-        : `un ${marca}${modelo && modelo !== 'OTRO' ? ` ${modelo}` : ' (te paso el modelo por acá)'}`
-    abrirWhatsApp(`Hola! Busco ${piezaTxt} para ${autoTxt}.`)
-  }
-
-  if (!marca) {
-    return (
-      <GridSelect
-        items={[...MARCAS.map((m) => ({ key: m, label: m.toUpperCase() })), { key: 'OTRA', label: 'OTRA MARCA', otro: true }]}
-        onPick={(k) => {
-          if (k === 'OTRA') {
-            setMarca('OTRA')
-            setModelo('OTRO')
-          } else {
-            setMarca(k)
-          }
-        }}
-      />
-    )
-  }
-
-  if (!modelo) {
-    return (
-      <div>
-        <Migas pasos={[marca.toUpperCase()]} onVolver={volver} />
-        <div className="font-display text-lg uppercase mb-4">¿Qué modelo?</div>
-        <GridSelect
-          items={[
-            ...(MODELOS[marca] || []).map((m) => ({ key: m, label: m.toUpperCase() })),
-            { key: 'OTRO', label: 'OTRO MODELO', otro: true },
-          ]}
-          onPick={setModelo}
-        />
-      </div>
-    )
-  }
-
-  return (
-    <div>
-      <Migas
-        pasos={[marca === 'OTRA' ? 'OTRA MARCA' : marca.toUpperCase(), ...(marca !== 'OTRA' ? [modelo === 'OTRO' ? 'OTRO MODELO' : modelo.toUpperCase()] : [])]}
-        onVolver={volver}
-      />
-      <div className="font-display text-lg uppercase mb-4">¿Qué pieza buscás?</div>
-      <GridSelect
-        items={[...PIEZAS.map((p) => ({ key: p.label, label: p.label })), { key: 'OTRA_PIEZA', label: 'OTRA PIEZA', otro: true }]}
-        onPick={elegirPieza}
-        final
-      />
-    </div>
-  )
-}
-
-/** Camino 2: pieza → auto → WhatsApp */
-function BuscadorPorPieza() {
-  const [pieza, setPieza] = useState<string | null>(null)
-
-  const elegirAuto = (key: string) => {
-    const p = PIEZAS.find((x) => x.label === pieza)
-    const piezaTxt = p ? p.msg : 'un repuesto (te cuento bien por acá)'
-    const autoTxt = key === 'OTRA' ? 'mi auto (te paso marca y modelo por acá)' : `un ${key} (te paso el modelo por acá)`
-    abrirWhatsApp(`Hola! Busco ${piezaTxt} para ${autoTxt}.`)
-  }
-
-  if (!pieza) {
-    return (
-      <GridSelect
-        items={[...PIEZAS.map((p) => ({ key: p.label, label: p.label })), { key: 'OTRA_PIEZA', label: 'OTRA PIEZA', otro: true }]}
-        onPick={setPieza}
-        dark
-      />
-    )
-  }
-
-  return (
-    <div>
-      <Migas pasos={[pieza === 'OTRA_PIEZA' ? 'OTRA PIEZA' : pieza]} onVolver={() => setPieza(null)} dark />
-      <div className="font-display text-lg uppercase mb-4 text-white">¿Para qué auto?</div>
-      <GridSelect
-        items={[...MARCAS.map((m) => ({ key: m, label: m.toUpperCase() })), { key: 'OTRA', label: 'OTRA MARCA', otro: true }]}
-        onPick={elegirAuto}
-        dark
-        final
-      />
-    </div>
-  )
-}
-
-/* ============ Página ============ */
 
 export default function App() {
   return (
@@ -368,8 +171,9 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Logo />
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
-            <a href="#buscador" className="hover:text-[#ef78ba]">Buscá tu repuesto</a>
-            <a href="#repuestos" className="hover:text-[#ef78ba]">Piezas</a>
+            <a href="#marcas" className="hover:text-[#ef78ba]">Marcas</a>
+            <a href="#repuestos" className="hover:text-[#ef78ba]">Repuestos</a>
+            <a href="#confianza" className="hover:text-[#ef78ba]">Confían en nosotros</a>
             <a href="#como" className="hover:text-[#ef78ba]">Cómo comprar</a>
             <a href="#opiniones" className="hover:text-[#ef78ba]">Opiniones</a>
             <a href="#contacto" className="hover:text-[#ef78ba]">Contacto</a>
@@ -387,15 +191,10 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="relative kk-dark text-white overflow-hidden">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-25"
-          style={{ backgroundImage: `url(${fotoPredio})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#111114]/60 via-transparent to-[#111114]" />
-        <div className="relative max-w-6xl mx-auto px-4 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
+      <section className="kk-dark text-white">
+        <div className="max-w-6xl mx-auto px-4 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6 bg-[#111114]/60">
+            <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6">
               <BadgeCheck className="w-4 h-4" />
               PRIMER DESARMADERO OFICIAL DE CORONEL SUÁREZ
             </div>
@@ -410,13 +209,13 @@ export default function App() {
               a cualquier punto del país. Atendemos particulares, talleres y aseguradoras.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
+              <WspButton link={WSP.agustin.link}>Consultar disponibilidad</WspButton>
               <a
-                href="#buscador"
-                className="inline-flex items-center gap-2 px-6 py-3.5 font-bold text-base tracking-wide transition-transform hover:-translate-y-0.5 bg-[#ef78ba] text-[#111114]"
+                href="#repuestos"
+                className="inline-flex items-center gap-2 px-6 py-3.5 font-bold border border-white/30 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
               >
-                <Search className="w-5 h-5" /> Buscar mi repuesto
+                Ver qué tenemos <ChevronRight className="w-4 h-4" />
               </a>
-              <WspButton link={WSP.agustin.link}>Consultar directo</WspButton>
             </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
               <div className="flex items-center gap-2">
@@ -457,70 +256,44 @@ export default function App() {
         </div>
 
         {/* Marquee */}
-        <div className="relative border-t border-white/10 overflow-hidden py-4">
+        <div className="border-t border-white/10 overflow-hidden py-4">
           <div className="kk-marquee flex whitespace-nowrap w-max">
-            {[...PIEZAS, ...PIEZAS].map((p, i) => (
+            {[...PARTES, ...PARTES].map((p, i) => (
               <span key={i} className="font-display text-sm tracking-widest mx-6 text-white/50">
-                {p.label} <span className="kk-pink mx-2">•</span>
+                {p} <span className="kk-pink mx-2">•</span>
               </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Buscador por marca */}
-      <section id="buscador" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-          <div>
-            <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">BUSCADOR DE REPUESTOS</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase flex items-center gap-3">
-              <Car className="w-8 h-8 kk-pink" /> Empezá por tu auto
-            </h2>
-            <p className="mt-3 text-black/60 max-w-xl">
-              Elegí marca y modelo, después la pieza — y el mensaje de WhatsApp sale armado.
-            </p>
-          </div>
+      {/* Marcas */}
+      <section id="marcas" className="max-w-6xl mx-auto px-4 py-20">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">TODAS LAS MARCAS, TODOS LOS MODELOS</div>
+          <h2 className="font-display text-3xl sm:text-4xl uppercase">¿De qué auto es tu repuesto?</h2>
+          <p className="mt-4 text-black/60">
+            Nafteros, gasoleros y diésel. Autos, camionetas y utilitarios de todos los años.
+          </p>
         </div>
-        <BuscadorPorMarca />
-      </section>
-
-      {/* Galería / así trabajamos */}
-      <section className="max-w-6xl mx-auto px-4 pb-20">
-        <div className="grid md:grid-cols-3 gap-4">
-          {[
-            { img: fotoMotores, t: 'MOTORES EN STOCK', d: 'Nafteros, gasoleros y diésel' },
-            { img: fotoCajas, t: 'CAJAS DE VELOCIDAD', d: 'Probadas antes de la venta' },
-            { img: fotoDesarme, t: 'DESARME PROLIJO', d: 'Cada pieza se recupera con cuidado' },
-          ].map(({ img, t, d }) => (
-            <div key={t} className="relative group overflow-hidden">
-              <img src={img} alt={t} className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#111114]/90 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 p-5 text-white">
-                <div className="font-display text-base">{t}</div>
-                <div className="text-xs text-white/70">{d}</div>
-              </div>
-            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+          {MARCAS.map((m) => (
+            <a
+              key={m}
+              href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Estoy buscando un repuesto para un ${m}.`)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group border border-black/10 px-5 py-4 text-center hover:border-[#ef78ba] hover:bg-[#faf3f8] transition-colors"
+            >
+              <span className="font-display text-sm sm:text-base tracking-wide group-hover:text-[#ef78ba] transition-colors">
+                {m.toUpperCase()}
+              </span>
+            </a>
           ))}
         </div>
-        <p className="mt-3 text-xs text-black/40">Imágenes ilustrativas.</p>
-      </section>
-
-      {/* Buscador por pieza */}
-      <section id="repuestos" className="kk-dark text-white py-20">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <div>
-              <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">¿PREFERÍS EMPEZAR POR LA PIEZA?</div>
-              <h2 className="font-display text-3xl sm:text-4xl uppercase">¿Qué estás buscando?</h2>
-              <p className="mt-3 text-white/70 max-w-xl">
-                Elegí la pieza, después el auto — dos clicks y el mensaje sale armado. El stock
-                cambia todos los días: si no lo ves acá, preguntá igual.
-              </p>
-            </div>
-            <WspButton link={WSP.mauro.link}>Preguntar directo</WspButton>
-          </div>
-          <BuscadorPorPieza />
-        </div>
+        <p className="mt-5 text-center text-sm text-black/50">
+          ¿Tu marca no está en la lista? Preguntá igual — ingresan vehículos todas las semanas.
+        </p>
       </section>
 
       {/* Franja legal compacta */}
@@ -543,6 +316,42 @@ export default function App() {
           >
             <FileCheck className="w-4 h-4" /> Verificalo en Argentina.gob.ar
           </a>
+        </div>
+      </section>
+
+      {/* Repuestos */}
+      <section id="repuestos" className="kk-dark text-white py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
+            <div>
+              <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">STOCK PERMANENTE</div>
+              <h2 className="font-display text-3xl sm:text-4xl uppercase">¿Qué estás buscando?</h2>
+              <p className="mt-3 text-white/70 max-w-xl">
+                Ingresan vehículos todas las semanas: nafteros, gasoleros y diésel, todas las marcas
+                y modelos. Si no lo ves acá, igual preguntá — el stock cambia todos los días.
+              </p>
+            </div>
+            <WspButton link={WSP.mauro.link}>Preguntar por una pieza</WspButton>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+            {PARTES.map((p) => (
+              <a
+                key={p}
+                href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Quería consultar si tienen ${p.toLowerCase()} disponibles.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group border border-white/15 p-5 hover:border-[#ef78ba] hover:bg-white/5 transition-colors"
+              >
+                <div className="font-display text-sm sm:text-base leading-snug">{p}</div>
+                <div className="mt-3 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
+                  CONSULTAR <ChevronRight className="w-3 h-3" />
+                </div>
+              </a>
+            ))}
+          </div>
+          <p className="mt-6 text-sm text-white/50">
+            ¿No ves lo que buscás? El stock cambia todos los días — escribinos y lo revisamos en el momento.
+          </p>
         </div>
       </section>
 
