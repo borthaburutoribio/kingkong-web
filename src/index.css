@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 7%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 7%;
+    --primary: 326 79% 70%;
+    --primary-foreground: 0 0% 7%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 40%;
+    --accent: 326 79% 95%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 326 79% 70%;
+    --radius: 0.25rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Archivo', system-ui, sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Archivo Black', 'Archivo', system-ui, sans-serif;
+}
+
+.kk-pink {
+  color: #ef78ba;
+}
+.kk-bg-pink {
+  background-color: #ef78ba;
+}
+
+/* subrayado estilo marcador, como en sus reels */
+.kk-underline {
+  position: relative;
+  display: inline-block;
+}
+.kk-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.12em;
+  height: 0.14em;
+  background: #ef78ba;
+}
+
+/* textura sutil para fondos oscuros */
+.kk-dark {
+  background-color: #111114;
+  background-image: radial-gradient(circle at 20% 30%, rgba(239, 120, 186, 0.07), transparent 40%),
+    radial-gradient(circle at 85% 75%, rgba(239, 120, 186, 0.05), transparent 35%);
+}
+
+.kk-marquee {
+  animation: kk-scroll 28s linear infinite;
+}
+@keyframes kk-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
