@@ -577,12 +577,12 @@ export default function App() {
             <div>
               <div className="font-display text-base uppercase">Desarmadero oficial, sin vueltas</div>
               <div className="text-sm opacity-80">
-                Inscriptos en DNRPA (registro N° 3566) y adheridos a CARVA. Piezas identificadas y con comprobante.
+                Inscriptos en DNRPA (registro N° 3932) y adheridos a CARVA. Piezas identificadas y con comprobante.
               </div>
             </div>
           </div>
           <a
-            href="https://www.dnrpa.gov.ar/consulta_inscriptos_web/"
+            href="https://www.dnrpa.gov.ar/desarmadero/consulta_inscriptos_web.php"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-[#111114] text-white px-5 py-3 font-bold text-sm hover:opacity-85 transition-opacity"
@@ -851,7 +851,7 @@ export default function App() {
           </div>
           <div className="text-xs leading-relaxed max-w-md">
             King Kong Autopartes Coronel Suárez SAS · Desarmadero oficial inscripto en DNRPA
-            (registro N° 3566) · Autopartes con oblea RUDAC y factura.
+            (registro N° 3932) · Autopartes con oblea RUDAC y factura.
           </div>
         </div>
       </footer>
