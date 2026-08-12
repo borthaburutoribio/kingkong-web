@@ -80,12 +80,6 @@ const MODELOS: Record<string, string[]> = {
   'Mercedes-Benz': ['Clase A', 'Clase C', 'Clase E', 'GLA', 'GLC', 'Sprinter', 'Vito'],
 }
 
-const ASEGURADORAS = [
-  'Sancor Seguros','Federación Patronal','La Segunda','Seguros Rivadavia',
-  'San Cristóbal','Mercantil Andina','Provincia Seguros','La Caja',
-  'Allianz','Zurich','Orbis Seguros','Berkley',
-]
-
 const RESEÑAS = [
   { nombre: 'Alejandro Besano', texto: 'Variedad de autopartes y en buen estado. Excelente atención y precios. Lo más importante, todo de origen legal.' },
   { nombre: 'Ezequiel Olmedo',  texto: 'Excelente atención y súper rápida la atención de los chicos que trabajan ahí.' },
@@ -673,16 +667,6 @@ export default function App() {
                 <div className="font-display text-lg uppercase mb-2">{t}</div>
                 <div className="text-sm text-white/60 leading-relaxed">{d}</div>
               </div>
-            ))}
-          </div>
-          <div className="text-center text-xs font-bold tracking-[0.25em] text-white/50 mb-6">
-            COMPAÑÍAS DE SEGUROS CON LAS QUE OPERAMOS
-          </div>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4">
-            {ASEGURADORAS.map((a) => (
-              <span key={a} className="font-display text-sm sm:text-base text-white/40 hover:text-white/80 transition-colors tracking-wide cursor-default">
-                {a.toUpperCase()}
-              </span>
             ))}
           </div>
         </div>
