@@ -232,7 +232,7 @@ function SearchWizard() {
         <div className="text-center mb-10">
           <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">BUSCADOR INTERACTIVO</div>
           <h2 className="font-display text-3xl sm:text-4xl uppercase">
-            Encontrá tu repuesto en <span className="kk-pink">2 pasos</span>
+            Encontrá tu repuesto en <span className="kk-pink">3 pasos</span>
           </h2>
           <p className="mt-3 text-black/55 max-w-lg mx-auto">
             Seleccioná y te llevamos directo al WhatsApp con la consulta lista.
