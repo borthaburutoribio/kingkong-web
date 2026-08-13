@@ -10,7 +10,6 @@ import {
   MessageCircle,
   CheckCircle2,
   Search,
-  PackageCheck,
   ChevronRight,
   ChevronLeft,
   BadgeCheck,
@@ -87,21 +86,6 @@ const RESEÑAS = [
   { nombre: 'Hernán Grandjean', texto: 'Gracias a los chicos de King Kong Autopartes. Excelente atención.' },
   { nombre: 'Rafa Prieto',      texto: 'Tienen muchos repuestos y a un muy buen precio 👍' },
 ]
-
-function WspButton({ link, children, size = 'md' }: { link: string; children: React.ReactNode; size?: 'sm' | 'md' }) {
-  const pad = size === 'sm' ? 'px-4 py-2.5 text-sm' : 'px-6 py-3.5 text-base'
-  return (
-    <a
-      href={`${link}?text=${MSG}`}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={`inline-flex items-center gap-2 ${pad} font-bold tracking-wide transition-all hover:-translate-y-0.5 hover:shadow-lg bg-[#ef78ba] text-[#111114]`}
-    >
-      <MessageCircle className="w-4 h-4 shrink-0" />
-      {children}
-    </a>
-  )
-}
 
 function Logo({ className = '' }: { className?: string }) {
   return (
@@ -459,7 +443,6 @@ export default function App() {
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
             <a href="#buscar"    className="hover:text-[#ef78ba] transition-colors">Buscar repuesto</a>
             <a href="#nosotros"  className="hover:text-[#ef78ba] transition-colors">Quiénes somos</a>
-            <a href="#como"      className="hover:text-[#ef78ba] transition-colors">Cómo comprar</a>
             <a href="#opiniones" className="hover:text-[#ef78ba] transition-colors">Opiniones</a>
             <a href="#contacto"  className="hover:text-[#ef78ba] transition-colors">Contacto</a>
           </nav>
@@ -571,36 +554,6 @@ export default function App() {
           >
             <FileCheck className="w-4 h-4" /> Verificalo en Argentina.gob.ar
           </a>
-        </div>
-      </section>
-
-      {/* Cómo comprar */}
-      <section id="como" className="max-w-6xl mx-auto px-4 py-20">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">ASÍ DE SIMPLE</div>
-          <h2 className="font-display text-3xl sm:text-4xl uppercase">
-            Consultás → buscamos → te resolvemos
-          </h2>
-        </div>
-        <div className="grid md:grid-cols-4 gap-6">
-          {[
-            { Icon: MessageCircle, t: 'Escribinos', d: 'Mandanos por WhatsApp qué pieza necesitás, marca, modelo y año del vehículo.' },
-            { Icon: Search,        t: 'La buscamos', d: 'Revisamos el stock en el momento y te mandamos fotos y precio de la pieza real.' },
-            { Icon: PackageCheck,  t: 'La preparamos', d: 'Desmontamos, probamos y embalamos tu repuesto listo para viajar.' },
-            { Icon: Truck,         t: 'Te llega', d: 'Retirás en Eucaliptus 4036 o te lo enviamos por expreso a todo el país.' },
-          ].map(({ Icon, t, d }, i) => (
-            <div key={t} className="relative border border-black/10 p-6 pt-8">
-              <div className="absolute -top-4 left-6 kk-bg-pink w-8 h-8 flex items-center justify-center font-display text-sm text-[#111114]">
-                {i + 1}
-              </div>
-              <Icon className="w-7 h-7 kk-pink mb-4" />
-              <div className="font-display text-base uppercase mb-2">{t}</div>
-              <div className="text-sm text-black/60 leading-relaxed">{d}</div>
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 text-center">
-          <WspButton link={WSP.agustin.link}>Empezar mi consulta</WspButton>
         </div>
       </section>
 
