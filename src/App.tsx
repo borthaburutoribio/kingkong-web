@@ -497,7 +497,7 @@ export default function App() {
                 <span className="text-black/50">en Google</span>
               </div>
               <div className="text-black/50">
-                <span className="font-bold text-[#111114]">+5.000</span> clientes nos siguen en redes
+                <span className="font-bold text-[#111114]">+7.000</span> clientes nos siguen en redes
               </div>
             </div>
           </div>
