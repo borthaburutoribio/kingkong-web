@@ -422,21 +422,6 @@ function SearchWizard() {
 export default function App() {
   return (
     <div className="min-h-screen bg-white text-[#111114]">
-      {/* Barra superior */}
-      <div className="kk-bg-pink text-[#111114] text-xs sm:text-sm font-semibold">
-        <div className="max-w-6xl mx-auto px-4 py-2 flex flex-wrap items-center justify-center sm:justify-between gap-x-6 gap-y-1">
-          <span className="inline-flex items-center gap-1.5">
-            <Clock className="w-3.5 h-3.5" /> Lunes a viernes · 8 a 16 hs
-          </span>
-          <span className="inline-flex items-center gap-1.5">
-            <Truck className="w-3.5 h-3.5" /> Envíos a todo el país
-          </span>
-          <span className="hidden md:inline-flex items-center gap-1.5">
-            <ShieldCheck className="w-3.5 h-3.5" /> Desarmadero legal · RUDAC
-          </span>
-        </div>
-      </div>
-
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-black/10">
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -498,6 +483,9 @@ export default function App() {
               </div>
               <div className="text-black/50">
                 <span className="font-bold text-[#111114]">+7.000</span> clientes nos siguen en redes
+              </div>
+              <div className="flex items-center gap-1.5 text-black/50">
+                <Clock className="w-4 h-4 kk-pink" /> Lunes a viernes · 8 a 16 hs
               </div>
             </div>
           </div>
