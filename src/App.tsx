@@ -442,8 +442,8 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
           <Logo />
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
-            <a href="#buscar"    className="hover:text-[#ef78ba] transition-colors">Buscar repuesto</a>
             <a href="#nosotros"  className="hover:text-[#ef78ba] transition-colors">Quiénes somos</a>
+            <a href="#buscar"    className="hover:text-[#ef78ba] transition-colors">Buscar repuesto</a>
             <a href="#opiniones" className="hover:text-[#ef78ba] transition-colors">Opiniones</a>
             <a href="#contacto"  className="hover:text-[#ef78ba] transition-colors">Contacto</a>
           </nav>
@@ -530,11 +530,6 @@ export default function App() {
         </div>
       </section>
 
-      {/* ── Buscador interactivo ── */}
-      <div id="buscar">
-        <SearchWizard />
-      </div>
-
       {/* Franja legal compacta */}
       <section className="kk-bg-pink">
         <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-4 text-[#111114]">
@@ -578,6 +573,11 @@ export default function App() {
           </div>
         </div>
       </section>
+
+      {/* ── Buscador interactivo ── */}
+      <div id="buscar">
+        <SearchWizard />
+      </div>
 
       {/* Opiniones */}
       <section id="opiniones" className="bg-[#faf3f8] py-20">
