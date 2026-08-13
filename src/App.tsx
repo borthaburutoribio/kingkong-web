@@ -16,6 +16,7 @@ import {
   Banknote,
   Car,
   Settings,
+  Image as ImageIcon,
 } from 'lucide-react'
 import logoImg from './assets/logo.jpg'
 
@@ -563,25 +564,17 @@ export default function App() {
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">QUIÉNES SOMOS</div>
             <h2 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h2>
-            <p className="mt-5 text-black/60 leading-relaxed">
-              Somos el desarmadero oficial de Coronel Suárez. Trabajamos inscriptos en el RUDAC
-              (registro N° 3932) y adheridos a CARVA, así que cada pieza que vendemos tiene su
-              identificación y comprobante en regla. Atendemos nosotros mismos, sin call center ni
-              bots, y enviamos a cualquier punto del país.
-            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
-            {[
-              { Icon: ShieldCheck,  t: 'Desarmadero oficial', d: 'Inscriptos en DNRPA y RUDAC. Todo legal, con comprobante.' },
-              { Icon: MessageCircle, t: 'Atención directa',   d: 'Hablás con nosotros, no con un bot. Te respondemos por WhatsApp.' },
-              { Icon: Truck,         t: 'Envíos a todo el país', d: 'Estés donde estés, te lo despachamos por el expreso que prefieras.' },
-            ].map(({ Icon, t, d }) => (
-              <div key={t} className="border border-black/10 p-7 text-center">
-                <Icon className="w-8 h-8 kk-pink mx-auto mb-4" />
-                <div className="font-display text-lg uppercase mb-2">{t}</div>
-                <div className="text-sm text-black/55 leading-relaxed">{d}</div>
-              </div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
+            <div className="aspect-[4/3] border border-dashed border-black/20 bg-[#faf3f8] flex flex-col items-center justify-center gap-2 text-center px-6">
+              <ImageIcon className="w-8 h-8 text-black/30" />
+              <span className="text-sm font-semibold text-black/40">Foto del equipo</span>
+            </div>
+            <p className="text-black/60 leading-relaxed">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
           </div>
         </div>
       </section>
