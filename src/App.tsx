@@ -472,11 +472,6 @@ export default function App() {
               <span className="kk-pink">hoy</span> y al{' '}
               <span className="kk-underline">mejor precio</span>.
             </h1>
-            <p className="mt-6 text-lg text-black/70 max-w-xl leading-relaxed">
-              Stock real que se renueva todas las semanas, todas las marcas y modelos. Consultás
-              por WhatsApp, te mandamos fotos y precio de la pieza en el momento, y te la enviamos
-              a cualquier punto del país.
-            </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a
                 href="#buscar"
