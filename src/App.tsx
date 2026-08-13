@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   Search,
   PackageCheck,
-  Wrench,
   ChevronRight,
   ChevronLeft,
   BadgeCheck,
@@ -459,7 +458,7 @@ export default function App() {
           <Logo />
           <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
             <a href="#buscar"    className="hover:text-[#ef78ba] transition-colors">Buscar repuesto</a>
-            <a href="#confianza" className="hover:text-[#ef78ba] transition-colors">Quiénes confían</a>
+            <a href="#nosotros"  className="hover:text-[#ef78ba] transition-colors">Quiénes somos</a>
             <a href="#como"      className="hover:text-[#ef78ba] transition-colors">Cómo comprar</a>
             <a href="#opiniones" className="hover:text-[#ef78ba] transition-colors">Opiniones</a>
             <a href="#contacto"  className="hover:text-[#ef78ba] transition-colors">Contacto</a>
@@ -477,7 +476,7 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="kk-dark text-white">
+      <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 pt-16 pb-14 sm:pt-24 sm:pb-20 grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
           <div>
             <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6">
@@ -489,7 +488,7 @@ export default function App() {
               <span className="kk-pink">hoy</span> y al{' '}
               <span className="kk-underline">mejor precio</span>.
             </h1>
-            <p className="mt-6 text-lg text-white/80 max-w-xl leading-relaxed">
+            <p className="mt-6 text-lg text-black/70 max-w-xl leading-relaxed">
               Stock real que se renueva todas las semanas, todas las marcas y modelos. Consultás
               por WhatsApp, te mandamos fotos y precio de la pieza en el momento, y te la enviamos
               a cualquier punto del país.
@@ -505,7 +504,7 @@ export default function App() {
                 href={`${WSP.agustin.link}?text=${MSG}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 font-bold border border-white/30 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3.5 font-bold border border-black/20 hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
               >
                 <MessageCircle className="w-4 h-4" /> WhatsApp directo
               </a>
@@ -516,16 +515,16 @@ export default function App() {
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />)}
                 </div>
                 <span className="font-bold">4,7</span>
-                <span className="text-white/60">en Google</span>
+                <span className="text-black/50">en Google</span>
               </div>
-              <div className="text-white/60">
-                <span className="font-bold text-white">+5.000</span> clientes nos siguen en redes
+              <div className="text-black/50">
+                <span className="font-bold text-[#111114]">+5.000</span> clientes nos siguen en redes
               </div>
             </div>
           </div>
 
           {/* Tarjeta de confianza */}
-          <div className="bg-white text-[#111114] p-7 border-t-8 border-[#ef78ba] shadow-2xl">
+          <div className="bg-white text-[#111114] p-7 border border-black/10 border-t-8 border-t-[#ef78ba] shadow-sm">
             <div className="font-display text-xl uppercase mb-5">Comprá tranquilo</div>
             <ul className="space-y-4 text-[15px]">
               {[
@@ -543,17 +542,6 @@ export default function App() {
                 </li>
               ))}
             </ul>
-          </div>
-        </div>
-
-        {/* Marquee */}
-        <div className="border-t border-white/10 overflow-hidden py-4">
-          <div className="kk-marquee flex whitespace-nowrap w-max">
-            {[...PARTES, ...PARTES].map((p, i) => (
-              <span key={i} className="font-display text-sm tracking-widest mx-6 text-white/50">
-                {p.toUpperCase()} <span className="kk-pink mx-2">•</span>
-              </span>
-            ))}
           </div>
         </div>
       </section>
@@ -583,39 +571,6 @@ export default function App() {
           >
             <FileCheck className="w-4 h-4" /> Verificalo en Argentina.gob.ar
           </a>
-        </div>
-      </section>
-
-      {/* Repuestos (sección reducida — el wizard ya cubre esto) */}
-      <section id="repuestos" className="kk-dark text-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
-            <div>
-              <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">STOCK PERMANENTE</div>
-              <h2 className="font-display text-3xl sm:text-4xl uppercase">Qué tenemos siempre</h2>
-              <p className="mt-3 text-white/70 max-w-xl">
-                Todas las semanas ingresan autos nuevos. Si no lo ves acá, preguntá igual — el
-                stock cambia todos los días.
-              </p>
-            </div>
-            <WspButton link={WSP.mauro.link}>Preguntar por una pieza</WspButton>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-            {PARTES.map((p) => (
-              <a
-                key={p}
-                href={`${WSP.agustin.link}?text=${encodeURIComponent(`Hola! Quería consultar si tienen ${p.toLowerCase()} disponibles.`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border border-white/15 p-5 hover:border-[#ef78ba] hover:bg-white/5 transition-all"
-              >
-                <div className="font-display text-sm sm:text-base leading-snug">{p}</div>
-                <div className="mt-3 text-xs kk-pink font-bold opacity-0 group-hover:opacity-100 transition-opacity flex items-center gap-1">
-                  CONSULTAR <ChevronRight className="w-3 h-3" />
-                </div>
-              </a>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -649,23 +604,29 @@ export default function App() {
         </div>
       </section>
 
-      {/* Quiénes confían */}
-      <section id="confianza" className="kk-dark text-white py-20">
+      {/* Quiénes somos */}
+      <section id="nosotros" className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">NO SOMOS NUEVOS EN ESTO</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase">Quiénes ya confían en nosotros</h2>
+            <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">QUIÉNES SOMOS</div>
+            <h2 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h2>
+            <p className="mt-5 text-black/60 leading-relaxed">
+              Somos el desarmadero oficial de Coronel Suárez. Trabajamos inscriptos en el RUDAC
+              (registro N° 3932) y adheridos a CARVA, así que cada pieza que vendemos tiene su
+              identificación y comprobante en regla. Atendemos nosotros mismos, sin call center ni
+              bots, y enviamos a cualquier punto del país.
+            </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-5 mb-12">
+          <div className="grid md:grid-cols-3 gap-5">
             {[
-              { Icon: Wrench,       t: 'Talleres mecánicos',       d: 'De Coronel Suárez y toda la zona nos compran repuestos todos los días para sus clientes.' },
-              { Icon: ShieldCheck,  t: 'Aseguradoras',             d: 'Trabajamos con compañías de seguros en la compra de vehículos dados de baja y la provisión de repuestos.' },
-              { Icon: CheckCircle2, t: 'Particulares de todo el país', d: 'Miles de clientes que consultaron por WhatsApp y recibieron su repuesto en la puerta de su casa.' },
+              { Icon: ShieldCheck,  t: 'Desarmadero oficial', d: 'Inscriptos en DNRPA y RUDAC. Todo legal, con comprobante.' },
+              { Icon: MessageCircle, t: 'Atención directa',   d: 'Hablás con nosotros, no con un bot. Te respondemos por WhatsApp.' },
+              { Icon: Truck,         t: 'Envíos a todo el país', d: 'Estés donde estés, te lo despachamos por el expreso que prefieras.' },
             ].map(({ Icon, t, d }) => (
-              <div key={t} className="border border-white/15 p-7 text-center">
+              <div key={t} className="border border-black/10 p-7 text-center">
                 <Icon className="w-8 h-8 kk-pink mx-auto mb-4" />
                 <div className="font-display text-lg uppercase mb-2">{t}</div>
-                <div className="text-sm text-white/60 leading-relaxed">{d}</div>
+                <div className="text-sm text-black/55 leading-relaxed">{d}</div>
               </div>
             ))}
           </div>
@@ -708,13 +669,13 @@ export default function App() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="kk-dark text-white py-20">
+      <section id="contacto" className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12">
             <div>
               <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">HABLÁ CON UNA PERSONA, NO CON UN BOT</div>
               <h2 className="font-display text-3xl sm:text-4xl uppercase mb-6">Contactanos directo</h2>
-              <p className="text-white/70 mb-8 max-w-md">
+              <p className="text-black/60 mb-8 max-w-md">
                 Atendemos nosotros mismos. Escribile a cualquiera del equipo y te respondemos en
                 horario de atención.
               </p>
@@ -725,7 +686,7 @@ export default function App() {
                     href={`${c.link}?text=${MSG}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between border border-white/15 px-5 py-4 hover:border-[#ef78ba] hover:bg-white/5 transition-colors group"
+                    className="flex items-center justify-between bg-[#faf3f8] border border-black/10 px-5 py-4 hover:border-[#ef78ba] transition-colors group"
                   >
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-full kk-bg-pink flex items-center justify-center font-display text-[#111114]">
@@ -733,7 +694,7 @@ export default function App() {
                       </div>
                       <div>
                         <div className="font-bold">{c.nombre}</div>
-                        <div className="text-sm text-white/60 flex items-center gap-1.5">
+                        <div className="text-sm text-black/50 flex items-center gap-1.5">
                           <Phone className="w-3.5 h-3.5" /> {c.tel}
                         </div>
                       </div>
@@ -744,7 +705,7 @@ export default function App() {
               </div>
             </div>
             <div>
-              <div className="bg-white text-[#111114] p-7 border-t-8 border-[#ef78ba]">
+              <div className="bg-[#faf3f8] text-[#111114] p-7 border border-black/10 border-t-8 border-t-[#ef78ba]">
                 <div className="font-display text-xl uppercase mb-5">Dónde estamos</div>
                 <div className="space-y-4 text-[15px]">
                   <div className="flex gap-3">
@@ -785,7 +746,7 @@ export default function App() {
                   <MapPin className="w-4 h-4" /> Cómo llegar (Google Maps)
                 </a>
               </div>
-              <div className="mt-5 border-4 border-white/10">
+              <div className="mt-5 border border-black/10">
                 <iframe
                   title="Mapa - King Kong Autopartes, Eucaliptus 4036, Coronel Suárez"
                   src="https://maps.google.com/maps?q=King%20Kong%20Autopartes%20Eucaliptus%204036%20Coronel%20Su%C3%A1rez&z=15&output=embed"
@@ -801,7 +762,7 @@ export default function App() {
                   href="https://www.instagram.com/kingkongautopartes/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
                 >
                   <Instagram className="w-4 h-4" /> @kingkongautopartes
                 </a>
@@ -809,7 +770,7 @@ export default function App() {
                   href="https://www.tiktok.com/@kingkongautopartes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
                 >
                   TikTok
                 </a>
@@ -817,7 +778,7 @@ export default function App() {
                   href="https://www.facebook.com/Kingkongautopartes"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 border border-white/20 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
                 >
                   Facebook
                 </a>
@@ -828,9 +789,9 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#0b0b0d] text-white/60 text-sm">
+      <footer className="bg-white border-t border-black/10 text-black/50 text-sm">
         <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-white">
+          <div className="text-[#111114]">
             <Logo />
           </div>
           <div className="text-xs leading-relaxed max-w-md">
