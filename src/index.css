@@ -65,22 +65,3 @@
   height: 0.14em;
   background: #ef78ba;
 }
-
-/* textura sutil para fondos oscuros */
-.kk-dark {
-  background-color: #111114;
-  background-image: radial-gradient(circle at 20% 30%, rgba(239, 120, 186, 0.07), transparent 40%),
-    radial-gradient(circle at 85% 75%, rgba(239, 120, 186, 0.05), transparent 35%);
-}
-
-.kk-marquee {
-  animation: kk-scroll 28s linear infinite;
-}
-@keyframes kk-scroll {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
