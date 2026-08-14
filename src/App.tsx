@@ -7,11 +7,11 @@ import {
   FileCheck,
   Star,
   MessageCircle,
-  BadgeCheck,
   Banknote,
-  Image as ImageIcon,
 } from 'lucide-react'
 import logoImg from './assets/logo.jpg'
+import heroPhoto from './assets/hero-photo.jpg'
+import teamPhoto from './assets/team-photo.jpg'
 
 function Instagram({ className = '' }: { className?: string }) {
   return (
@@ -43,10 +43,11 @@ const RESEÑAS = [
 
 function HeroFrame() {
   return (
-    <div className="w-full max-w-sm aspect-[4/5] border border-dashed border-black/20 bg-[#faf3f8] flex flex-col items-center justify-center gap-2 text-center px-6">
-      <ImageIcon className="w-8 h-8 text-black/30" />
-      <span className="text-sm font-semibold text-black/40">Foto real del local<br />(la sumamos después)</span>
-    </div>
+    <img
+      src={heroPhoto}
+      alt="Mecánico trabajando en un desarme en King Kong Autopartes"
+      className="w-full max-w-sm aspect-[4/5] object-cover"
+    />
   )
 }
 
@@ -100,10 +101,6 @@ export default function App() {
       <section className="bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 pt-16 pb-16 sm:pt-24 sm:pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6">
-              <BadgeCheck className="w-4 h-4" />
-              PRIMER DESARMADERO OFICIAL DE CORONEL SUÁREZ
-            </div>
             <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.03] uppercase max-w-xl">
               El repuesto que buscás,{' '}
               <span className="kk-pink">hoy</span> y al{' '}
@@ -129,9 +126,6 @@ export default function App() {
               </div>
               <div className="text-black/50">
                 <span className="font-bold text-[#111114]">+7.000</span> clientes nos siguen en redes
-              </div>
-              <div className="flex items-center gap-1.5 text-black/50">
-                <Clock className="w-4 h-4 kk-pink" /> Lunes a viernes · 8 a 16 hs
               </div>
             </div>
           </div>
@@ -172,10 +166,11 @@ export default function App() {
             <h2 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h2>
           </div>
           <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
-            <div className="aspect-[4/3] border border-dashed border-black/20 bg-[#faf3f8] flex flex-col items-center justify-center gap-2 text-center px-6">
-              <ImageIcon className="w-8 h-8 text-black/30" />
-              <span className="text-sm font-semibold text-black/40">Foto del equipo</span>
-            </div>
+            <img
+              src={teamPhoto}
+              alt="Equipo de King Kong Autopartes"
+              className="aspect-[4/3] w-full object-cover"
+            />
             <p className="text-black/60 leading-relaxed">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor
               incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
