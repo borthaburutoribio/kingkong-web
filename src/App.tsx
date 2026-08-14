@@ -41,22 +41,19 @@ const RESEÑAS = [
   { nombre: 'Rafa Prieto',      texto: 'Tienen muchos repuestos y a un muy buen precio 👍' },
 ]
 
-function PartsTag() {
+function HeroFrame() {
   return (
     <div className="relative select-none">
-      <div className="absolute inset-0 -z-10 w-64 sm:w-72 rotate-3 translate-x-3 translate-y-3 bg-[#faf3f8] border border-black/5" />
-      <div className="relative w-64 sm:w-72 -rotate-6 bg-[#111114] text-white shadow-2xl">
+      <div className="absolute inset-0 -z-10 w-64 sm:w-80 rotate-3 translate-x-3 translate-y-3 bg-[#faf3f8] border border-black/5" />
+      <div className="relative w-64 sm:w-80 -rotate-3 bg-[#111114] shadow-2xl overflow-hidden">
         <div
           className="h-2.5 w-full"
           style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ef78ba 0 10px, #111114 10px 20px)' }}
         />
         <div className="absolute -top-3 left-7 w-6 h-6 rounded-full bg-white border-4 border-[#111114]" />
-        <div className="px-7 py-8 pt-9">
-          <div className="text-[10px] tracking-[0.3em] font-semibold kk-pink">REPUESTO VERIFICADO</div>
-          <div className="font-display text-4xl mt-2 tracking-tight">N.° 3932</div>
-          <div className="h-px bg-white/15 my-4" />
-          <div className="text-xs tracking-[0.2em] font-bold">ORIGEN LEGAL</div>
-          <div className="text-[11px] text-white/50 mt-1">Inscriptos en DNRPA · Adheridos a CARVA</div>
+        <div className="aspect-[4/5] bg-[#1a1a1e] flex flex-col items-center justify-center gap-2 text-center px-6">
+          <ImageIcon className="w-8 h-8 text-white/25" />
+          <span className="text-sm font-semibold text-white/40">Foto real del local<br />(la sumamos después)</span>
         </div>
       </div>
     </div>
@@ -149,7 +146,7 @@ export default function App() {
             </div>
           </div>
           <div className="flex justify-center lg:justify-end">
-            <PartsTag />
+            <HeroFrame />
           </div>
         </div>
       </section>
