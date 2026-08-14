@@ -41,6 +41,28 @@ const RESEÑAS = [
   { nombre: 'Rafa Prieto',      texto: 'Tienen muchos repuestos y a un muy buen precio 👍' },
 ]
 
+function PartsTag() {
+  return (
+    <div className="relative select-none">
+      <div className="absolute inset-0 -z-10 w-64 sm:w-72 rotate-3 translate-x-3 translate-y-3 bg-[#faf3f8] border border-black/5" />
+      <div className="relative w-64 sm:w-72 -rotate-6 bg-[#111114] text-white shadow-2xl">
+        <div
+          className="h-2.5 w-full"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ef78ba 0 10px, #111114 10px 20px)' }}
+        />
+        <div className="absolute -top-3 left-7 w-6 h-6 rounded-full bg-white border-4 border-[#111114]" />
+        <div className="px-7 py-8 pt-9">
+          <div className="text-[10px] tracking-[0.3em] font-semibold kk-pink">REPUESTO VERIFICADO</div>
+          <div className="font-display text-4xl mt-2 tracking-tight">N.° 3932</div>
+          <div className="h-px bg-white/15 my-4" />
+          <div className="text-xs tracking-[0.2em] font-bold">ORIGEN LEGAL</div>
+          <div className="text-[11px] text-white/50 mt-1">Inscriptos en DNRPA · Adheridos a CARVA</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Logo({ className = '' }: { className?: string }) {
   return (
     <div className={`flex items-center gap-2.5 ${className}`}>
@@ -88,14 +110,14 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section className="bg-white">
-        <div className="max-w-3xl mx-auto px-4 pt-16 pb-14 sm:pt-24 sm:pb-20">
+      <section className="bg-white overflow-hidden">
+        <div className="max-w-6xl mx-auto px-4 pt-16 pb-16 sm:pt-24 sm:pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center">
           <div>
             <div className="inline-flex items-center gap-2 border border-[#ef78ba] text-[#ef78ba] px-3 py-1.5 text-xs font-bold tracking-[0.2em] mb-6">
               <BadgeCheck className="w-4 h-4" />
               PRIMER DESARMADERO OFICIAL DE CORONEL SUÁREZ
             </div>
-            <h1 className="font-display text-4xl sm:text-6xl leading-[1.02] uppercase">
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl leading-[1.03] uppercase max-w-xl">
               El repuesto que buscás,{' '}
               <span className="kk-pink">hoy</span> y al{' '}
               <span className="kk-underline">mejor precio</span>.
@@ -126,6 +148,9 @@ export default function App() {
               </div>
             </div>
           </div>
+          <div className="flex justify-center lg:justify-end">
+            <PartsTag />
+          </div>
         </div>
       </section>
 
@@ -135,7 +160,7 @@ export default function App() {
           <div className="flex items-center gap-3">
             <ShieldCheck className="w-8 h-8 shrink-0" />
             <div>
-              <div className="font-display text-base uppercase">Desarmadero oficial, sin vueltas</div>
+              <div className="font-display text-base uppercase">Desarmadero oficial</div>
               <div className="text-sm opacity-80">
                 Inscriptos en DNRPA (registro N° 3932) y adheridos a CARVA. Piezas identificadas y con comprobante.
               </div>
