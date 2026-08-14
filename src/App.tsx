@@ -43,19 +43,9 @@ const RESEÑAS = [
 
 function HeroFrame() {
   return (
-    <div className="relative select-none">
-      <div className="absolute inset-0 -z-10 w-64 sm:w-80 rotate-3 translate-x-3 translate-y-3 bg-[#faf3f8] border border-black/5" />
-      <div className="relative w-64 sm:w-80 -rotate-3 bg-[#111114] shadow-2xl overflow-hidden">
-        <div
-          className="h-2.5 w-full"
-          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #ef78ba 0 10px, #111114 10px 20px)' }}
-        />
-        <div className="absolute -top-3 left-7 w-6 h-6 rounded-full bg-white border-4 border-[#111114]" />
-        <div className="aspect-[4/5] bg-[#1a1a1e] flex flex-col items-center justify-center gap-2 text-center px-6">
-          <ImageIcon className="w-8 h-8 text-white/25" />
-          <span className="text-sm font-semibold text-white/40">Foto real del local<br />(la sumamos después)</span>
-        </div>
-      </div>
+    <div className="w-full max-w-sm aspect-[4/5] border border-dashed border-black/20 bg-[#faf3f8] flex flex-col items-center justify-center gap-2 text-center px-6">
+      <ImageIcon className="w-8 h-8 text-black/30" />
+      <span className="text-sm font-semibold text-black/40">Foto real del local<br />(la sumamos después)</span>
     </div>
   )
 }
