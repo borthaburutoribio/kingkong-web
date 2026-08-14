@@ -174,11 +174,14 @@ export default function App() {
       </section>
 
       {/* Contacto */}
-      <section id="contacto" className="bg-white py-20">
+      <section id="contacto" className="bg-[#faf3f8] py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12">
-            <div>
-              <h2 className="font-display text-3xl sm:text-4xl uppercase mb-8">Contacto</h2>
+          <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Contacto</h2>
+
+          <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+            {/* Columna 1: WhatsApp */}
+            <div className="bg-white border border-black/10 p-6 flex flex-col">
+              <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-4">HABLANOS POR WHATSAPP</div>
               <div className="space-y-3">
                 {Object.values(WSP).map((c) => (
                   <a
@@ -186,110 +189,114 @@ export default function App() {
                     href={`${c.link}?text=${MSG}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-between bg-[#faf3f8] border border-black/10 px-5 py-4 hover:border-[#ef78ba] transition-colors group"
+                    className="flex items-center justify-between border border-black/10 px-4 py-3.5 hover:border-[#ef78ba] transition-colors group"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 rounded-full kk-bg-pink flex items-center justify-center font-display text-[#111114]">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full kk-bg-pink flex items-center justify-center font-display text-[#111114] shrink-0">
                         {c.nombre[0]}
                       </div>
                       <div>
-                        <div className="font-bold">{c.nombre}</div>
-                        <div className="text-sm text-black/50 flex items-center gap-1.5">
-                          <Phone className="w-3.5 h-3.5" /> {c.tel}
+                        <div className="font-bold text-sm">{c.nombre}</div>
+                        <div className="text-xs text-black/50 flex items-center gap-1.5">
+                          <Phone className="w-3 h-3" /> {c.tel}
                         </div>
                       </div>
                     </div>
-                    <MessageCircle className="w-5 h-5 kk-pink opacity-60 group-hover:opacity-100" />
+                    <MessageCircle className="w-4 h-4 kk-pink opacity-60 group-hover:opacity-100 shrink-0" />
                   </a>
                 ))}
               </div>
             </div>
-            <div>
-              <div className="bg-[#faf3f8] text-[#111114] p-7 border border-black/10 border-t-8 border-t-[#ef78ba]">
-                <div className="font-display text-xl uppercase mb-5">Dónde estamos</div>
-                <div className="space-y-4 text-[15px]">
-                  <div className="flex gap-3">
-                    <MapPin className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold">Eucaliptus 4036, Coronel Suárez</div>
-                      <div className="text-sm text-black/60">Provincia de Buenos Aires (B7540)</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Clock className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold">Lunes a viernes, 8 a 16 hs</div>
-                      <div className="text-sm text-black/60">Horario de corrido</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Truck className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold">Envíos a todo el país</div>
-                      <div className="text-sm text-black/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
-                    </div>
-                  </div>
-                  <div className="flex gap-3">
-                    <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                    <div>
-                      <div className="font-bold">Formas de pago</div>
-                      <div className="text-sm text-black/60">Efectivo, transferencia y Mercado Pago.</div>
-                    </div>
+
+            {/* Columna 2: Dónde estamos */}
+            <div className="bg-white text-[#111114] p-6 border border-black/10 border-t-8 border-t-[#ef78ba] flex flex-col">
+              <div className="font-display text-lg uppercase mb-4">Dónde estamos</div>
+              <div className="space-y-4 text-[15px] flex-1">
+                <div className="flex gap-3">
+                  <MapPin className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">Eucaliptus 4036, Coronel Suárez</div>
+                    <div className="text-sm text-black/60">Provincia de Buenos Aires (B7540)</div>
                   </div>
                 </div>
-                <a
-                  href={MAPS}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 bg-[#111114] text-white px-5 py-3 font-bold text-sm hover:bg-[#ef78ba] hover:text-[#111114] transition-colors"
-                >
-                  <MapPin className="w-4 h-4" /> Cómo llegar (Google Maps)
-                </a>
+                <div className="flex gap-3">
+                  <Clock className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">Lunes a viernes, 8 a 16 hs</div>
+                    <div className="text-sm text-black/60">Horario de corrido</div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <Truck className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">Envíos a todo el país</div>
+                    <div className="text-sm text-black/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold">Formas de pago</div>
+                    <div className="text-sm text-black/60">Efectivo, transferencia y Mercado Pago.</div>
+                  </div>
+                </div>
               </div>
-              <div className="mt-5 border border-black/10">
-                <iframe
-                  title="Mapa - King Kong Autopartes, Eucaliptus 4036, Coronel Suárez"
-                  src="https://maps.google.com/maps?q=King%20Kong%20Autopartes%20Eucaliptus%204036%20Coronel%20Su%C3%A1rez&z=15&output=embed"
-                  className="w-full h-64 block"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  allowFullScreen
-                />
-              </div>
-              <div className="mt-5 flex flex-wrap gap-3">
-                <a
-                  href="https://www.instagram.com/kingkongautopartes/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
-                >
-                  <Instagram className="w-4 h-4" /> @kingkongautopartes
-                </a>
-                <a
-                  href="https://www.tiktok.com/@kingkongautopartes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
-                >
-                  TikTok
-                </a>
-                <a
-                  href="https://www.facebook.com/Kingkongautopartes"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#faf3f8] border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
-                >
-                  Facebook
-                </a>
-              </div>
+              <a
+                href={MAPS}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center justify-center gap-2 bg-[#111114] text-white px-5 py-3 font-bold text-sm hover:bg-[#ef78ba] hover:text-[#111114] transition-colors"
+              >
+                <MapPin className="w-4 h-4" /> Cómo llegar
+              </a>
             </div>
+
+            {/* Columna 3: Mapa */}
+            <div className="border border-black/10 min-h-[280px] lg:min-h-0">
+              <iframe
+                title="Mapa - King Kong Autopartes, Eucaliptus 4036, Coronel Suárez"
+                src="https://maps.google.com/maps?q=King%20Kong%20Autopartes%20Eucaliptus%204036%20Coronel%20Su%C3%A1rez&z=15&output=embed"
+                className="w-full h-full block"
+                style={{ border: 0 }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
+            </div>
+          </div>
+
+          {/* Redes sociales */}
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <a
+              href="https://www.instagram.com/kingkongautopartes/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+            >
+              <Instagram className="w-4 h-4" /> @kingkongautopartes
+            </a>
+            <a
+              href="https://www.tiktok.com/@kingkongautopartes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+            >
+              TikTok
+            </a>
+            <a
+              href="https://www.facebook.com/Kingkongautopartes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-black/15 px-4 py-2.5 text-sm font-semibold hover:border-[#ef78ba] hover:text-[#ef78ba] transition-colors"
+            >
+              Facebook
+            </a>
           </div>
         </div>
       </section>
 
       {/* Opiniones */}
-      <section id="opiniones" className="bg-[#faf3f8] py-20">
+      <section id="opiniones" className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
             <div>
@@ -310,7 +317,7 @@ export default function App() {
           </div>
           <div className="grid md:grid-cols-3 gap-5">
             {RESEÑAS.map((r) => (
-              <div key={r.nombre} className="bg-white border border-black/10 p-6">
+              <div key={r.nombre} className="bg-[#faf3f8] border border-black/10 p-6">
                 <div className="flex mb-3">
                   {[...Array(5)].map((_, i) => <Star key={i} className="w-4 h-4 fill-[#ef78ba] text-[#ef78ba]" />)}
                 </div>
