@@ -4,24 +4,27 @@
 
 @layer base {
   :root {
+    /* Paleta estrictamente rosa + blanco (pedido del cliente): todos los
+       tonos de "tinta" son variaciones del mismo rosa de marca (hue 327),
+       nunca negro ni gris. */
     --background: 0 0% 100%;
-    --foreground: 0 0% 7%;
+    --foreground: 327 55% 22%;
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 7%;
+    --card-foreground: 327 55% 22%;
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 7%;
+    --popover-foreground: 327 55% 22%;
     --primary: 326 79% 70%;
-    --primary-foreground: 0 0% 7%;
-    --secondary: 0 0% 96.1%;
-    --secondary-foreground: 0 0% 9%;
-    --muted: 0 0% 96.1%;
-    --muted-foreground: 0 0% 40%;
-    --accent: 326 79% 95%;
-    --accent-foreground: 0 0% 9%;
+    --primary-foreground: 327 55% 22%;
+    --secondary: 327 45% 96%;
+    --secondary-foreground: 327 55% 22%;
+    --muted: 327 45% 96%;
+    --muted-foreground: 327 25% 45%;
+    --accent: 327 60% 93%;
+    --accent-foreground: 327 55% 22%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
+    --border: 327 40% 91%;
+    --input: 327 40% 91%;
     --ring: 326 79% 70%;
     --radius: 0.25rem;
   }
