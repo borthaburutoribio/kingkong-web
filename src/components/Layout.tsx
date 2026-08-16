@@ -12,6 +12,7 @@ const NAV_LINKS = [
   { to: '/nosotros', label: 'Quiénes somos' },
   { to: '/contacto', label: 'Teléfonos de Contacto' },
   { to: '/ubicacion', label: 'Nuestra ubicación' },
+  { to: '/repuestos', label: 'Nuestros Repuestos' },
   { to: '/referencias', label: 'Nuestras Referencias' },
 ]
 
@@ -51,10 +52,10 @@ export default function Layout() {
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Link to="/" className="min-w-0 xl:shrink-0">
+          <Link to="/" className="min-w-0 2xl:shrink-0">
             <Logo size="lg" />
           </Link>
-          <nav className="hidden xl:flex items-center gap-5 text-sm font-semibold shrink-0">
+          <nav className="hidden 2xl:flex items-center gap-5 text-sm font-semibold shrink-0">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.to}
@@ -73,7 +74,7 @@ export default function Layout() {
             <Button
               variant="outline"
               size="icon"
-              className="xl:hidden border-border"
+              className="2xl:hidden border-border"
               aria-label="Abrir menú"
               onClick={() => setMenuOpen(true)}
             >

@@ -21,6 +21,11 @@ const TEASERS = [
     desc: 'Horarios, envíos, formas de pago y cómo llegar al local.',
   },
   {
+    to: '/repuestos',
+    title: 'Nuestros Repuestos',
+    desc: 'Motores, periféricos, cajas y carrocería — lo que tenemos en stock.',
+  },
+  {
     to: '/referencias',
     title: 'Nuestras Referencias',
     desc: 'Lo que dicen nuestros clientes en Google, con 4,7 de calificación.',
@@ -92,7 +97,7 @@ export default function Home() {
       {/* Accesos directos */}
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 [&>*]:min-w-0">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 [&>*]:min-w-0">
             {TEASERS.map((t) => (
               <Link key={t.to} to={t.to}>
                 <Card className="h-full border-border hover:border-primary transition-colors">
