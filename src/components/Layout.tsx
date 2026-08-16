@@ -8,8 +8,10 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sh
 import logoImg from '@/assets/logo.jpg'
 
 const NAV_LINKS = [
+  { to: '/', label: 'Inicio' },
   { to: '/nosotros', label: 'Quiénes somos' },
   { to: '/contacto', label: 'Teléfonos de Contacto' },
+  { to: '/ubicacion', label: 'Nuestra ubicación' },
   { to: '/referencias', label: 'Nuestras Referencias' },
 ]
 
@@ -24,8 +26,8 @@ export function Logo({ className = '', size = 'md' }: { className?: string; size
         className={cn(imgSize, 'rounded-full shrink-0 object-cover')}
       />
       <div className="leading-none">
-        <div className={cn('font-display tracking-tight', nameSize)}>
-          King Kong <span className="kk-pink">Autopartes</span>
+        <div className={cn('font-display tracking-tight kk-pink', nameSize)}>
+          King Kong Autopartes
         </div>
         <div className="text-[10px] tracking-[0.25em] font-semibold opacity-70 mt-1">
           DESARMADERO OFICIAL · CORONEL SUÁREZ
@@ -52,11 +54,12 @@ export default function Layout() {
           <Link to="/">
             <Logo size="lg" />
           </Link>
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-semibold">
+          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
+                end={link.to === '/'}
                 className={({ isActive }) =>
                   cn('hover:text-primary transition-colors', isActive && 'kk-pink')
                 }
@@ -92,6 +95,7 @@ export default function Layout() {
               <NavLink
                 key={link.to}
                 to={link.to}
+                end={link.to === '/'}
                 className={({ isActive }) =>
                   cn('hover:text-primary transition-colors', isActive && 'kk-pink')
                 }

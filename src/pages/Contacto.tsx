@@ -1,6 +1,7 @@
-import { Phone, MapPin, Clock, Truck, Banknote } from 'lucide-react'
+import { Phone } from 'lucide-react'
 import { ContactActions } from '@/components/ContactActions'
-import { WSP, MAPS } from '@/lib/site-data'
+import { UbicacionInfo } from '@/components/UbicacionInfo'
+import { WSP } from '@/lib/site-data'
 
 function Instagram({ className = '' }: { className?: string }) {
   return (
@@ -18,7 +19,7 @@ export default function Contacto() {
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Teléfonos de Contacto</h2>
 
-        <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-6 items-stretch">
           {/* Columna 1: Llamar o escribir */}
           <div className="bg-white border border-border p-6 flex flex-col">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-4">LLAMANOS O ESCRIBINOS</div>
@@ -45,61 +46,8 @@ export default function Contacto() {
             </div>
           </div>
 
-          {/* Columna 2: Nuestra ubicación */}
-          <div className="bg-white text-foreground p-6 border border-border border-t-8 border-t-primary flex flex-col">
-            <div className="font-display text-lg uppercase mb-4">Nuestra ubicación</div>
-            <div className="space-y-4 text-[15px] flex-1">
-              <div className="flex gap-3">
-                <MapPin className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold">Eucaliptus 4036, Coronel Suárez</div>
-                  <div className="text-sm text-foreground/60">Provincia de Buenos Aires (B7540)</div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <Clock className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold">Lunes a viernes, 8 a 16 hs</div>
-                  <div className="text-sm text-foreground/60">Horario de corrido</div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <Truck className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold">Envíos a todo el país</div>
-                  <div className="text-sm text-foreground/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
-                </div>
-              </div>
-              <div className="flex gap-3">
-                <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold">Formas de pago</div>
-                  <div className="text-sm text-foreground/60">Efectivo, transferencia y Mercado Pago.</div>
-                </div>
-              </div>
-            </div>
-            <a
-              href={MAPS}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-flex items-center justify-center gap-2 bg-foreground text-white px-5 py-3 font-bold text-sm hover:bg-primary hover:text-primary-foreground transition-colors"
-            >
-              <MapPin className="w-4 h-4" /> Cómo llegar
-            </a>
-          </div>
-
-          {/* Columna 3: Mapa */}
-          <div className="border border-border min-h-[280px] lg:min-h-0">
-            <iframe
-              title="Mapa - King Kong Autopartes, Eucaliptus 4036, Coronel Suárez"
-              src="https://maps.google.com/maps?q=King%20Kong%20Autopartes%20Eucaliptus%204036%20Coronel%20Su%C3%A1rez&z=15&output=embed"
-              className="w-full h-full block"
-              style={{ border: 0 }}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              allowFullScreen
-            />
-          </div>
+          {/* Columna 2: info práctica (misma que en Nuestra ubicación) */}
+          <UbicacionInfo />
         </div>
 
         {/* Redes sociales */}

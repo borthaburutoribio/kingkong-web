@@ -1,14 +1,8 @@
 import { Link } from 'react-router-dom'
-import { Star, ShieldCheck, FileCheck, Truck, PhoneCall } from 'lucide-react'
+import { Star, ShieldCheck, FileCheck } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ContactActions } from '@/components/ContactActions'
-import heroPhoto from '@/assets/hero-estanteria.jpg'
-
-const HERO_FEATURES = [
-  { icon: ShieldCheck, label: 'Desarmadero oficial, piezas identificadas y con comprobante' },
-  { icon: Truck, label: 'Envíos a todo el país' },
-  { icon: PhoneCall, label: 'Atención directa, sin vueltas' },
-]
+import heroBg from '@/assets/hero-bg-pasillo.jpg'
 
 const TEASERS = [
   {
@@ -19,7 +13,12 @@ const TEASERS = [
   {
     to: '/contacto',
     title: 'Teléfonos de Contacto',
-    desc: 'Llamanos o escribinos, y encontrá cómo llegar hasta el local.',
+    desc: 'Llamanos o escribinos directo a Mauro, Agustín o Gonzalo.',
+  },
+  {
+    to: '/ubicacion',
+    title: 'Nuestra ubicación',
+    desc: 'Horarios, envíos, formas de pago y cómo llegar al local.',
   },
   {
     to: '/referencias',
@@ -32,45 +31,37 @@ export default function Home() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-white overflow-hidden">
-        <div className="max-w-6xl mx-auto px-4 pt-16 pb-16 sm:pt-24 sm:pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center">
-          <div>
-            <p className="text-xl sm:text-2xl text-foreground/70 leading-relaxed max-w-lg">
-              Repuestos usados de todas las marcas, al mejor precio, en el desarmadero
-              oficial de Coronel Suárez.
-            </p>
-            <div className="mt-8 space-y-3">
-              {HERO_FEATURES.map((f) => (
-                <div key={f.label} className="flex items-center gap-3">
-                  <f.icon className="w-5 h-5 kk-pink shrink-0" />
-                  <span className="text-sm font-semibold">{f.label}</span>
-                </div>
-              ))}
-            </div>
-            <div className="mt-8">
-              <ContactActions variant="hero" />
-            </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
-              <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-primary text-primary" />
-                  ))}
-                </div>
-                <span className="font-bold">4,7</span>
-                <span className="text-foreground/50">en Google</span>
-              </div>
-              <div className="text-foreground/50">
-                <span className="font-bold text-foreground">+7.000</span> clientes nos siguen en redes
-              </div>
-            </div>
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src={heroBg}
+            alt=""
+            aria-hidden="true"
+            className="w-full h-full object-cover object-[center_35%] blur-lg scale-110"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/85 via-foreground/75 to-foreground/90" />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
+          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight kk-pink">
+            Repuestos de todas las marcas, al mejor precio, en el desarmadero oficial de
+            Coronel Suárez.
+          </h1>
+          <div className="mt-10 flex justify-center">
+            <ContactActions variant="hero" />
           </div>
-          <div className="flex justify-center lg:justify-end">
-            <img
-              src={heroPhoto}
-              alt="Estantería de repuestos en King Kong Autopartes"
-              className="w-full max-w-sm aspect-[4/5] object-cover"
-            />
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-white/80">
+            <div className="flex items-center gap-2">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-primary text-primary" />
+                ))}
+              </div>
+              <span className="font-bold text-white">4,7</span>
+              <span>en Google</span>
+            </div>
+            <div>
+              <span className="font-bold text-white">+7.000</span> clientes nos siguen en redes
+            </div>
           </div>
         </div>
       </section>
@@ -101,7 +92,7 @@ export default function Home() {
       {/* Accesos directos */}
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TEASERS.map((t) => (
               <Link key={t.to} to={t.to}>
                 <Card className="h-full border-border hover:border-primary transition-colors">
