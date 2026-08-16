@@ -19,7 +19,7 @@ export default function Contacto() {
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Teléfonos de Contacto</h2>
 
-        <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+        <div className="grid lg:grid-cols-2 gap-6 items-stretch [&>*]:min-w-0">
           {/* Columna 1: Llamar o escribir */}
           <div className="bg-white border border-border p-6 flex flex-col">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-4">LLAMANOS O ESCRIBINOS</div>

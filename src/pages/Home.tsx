@@ -92,7 +92,7 @@ export default function Home() {
       {/* Accesos directos */}
       <section className="bg-white py-20">
         <div className="max-w-6xl mx-auto px-4">
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 [&>*]:min-w-0">
             {TEASERS.map((t) => (
               <Link key={t.to} to={t.to}>
                 <Card className="h-full border-border hover:border-primary transition-colors">

@@ -16,20 +16,20 @@ const NAV_LINKS = [
 ]
 
 export function Logo({ className = '', size = 'md' }: { className?: string; size?: 'md' | 'lg' }) {
-  const imgSize = size === 'lg' ? 'w-16 h-16' : 'w-11 h-11'
-  const nameSize = size === 'lg' ? 'text-2xl' : 'text-lg'
+  const imgSize = size === 'lg' ? 'w-11 h-11 sm:w-16 sm:h-16' : 'w-11 h-11'
+  const nameSize = size === 'lg' ? 'text-lg sm:text-2xl' : 'text-lg'
   return (
-    <div className={cn('flex items-center gap-3', className)}>
+    <div className={cn('flex items-center gap-2 sm:gap-3 min-w-0', className)}>
       <img
         src={logoImg}
         alt="King Kong Autopartes - Desarmadero Oficial Coronel Suárez"
         className={cn(imgSize, 'rounded-full shrink-0 object-cover')}
       />
-      <div className="leading-none">
-        <div className={cn('font-display tracking-tight kk-pink', nameSize)}>
+      <div className="leading-none min-w-0">
+        <div className={cn('font-display tracking-tight kk-pink truncate', nameSize)}>
           King Kong Autopartes
         </div>
-        <div className="text-[10px] tracking-[0.25em] font-semibold opacity-70 mt-1">
+        <div className="text-[10px] tracking-[0.25em] font-semibold opacity-70 mt-1 truncate">
           DESARMADERO OFICIAL · CORONEL SUÁREZ
         </div>
       </div>
@@ -51,7 +51,7 @@ export default function Layout() {
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
         <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Link to="/" className="shrink-0">
+          <Link to="/" className="min-w-0 xl:shrink-0">
             <Logo size="lg" />
           </Link>
           <nav className="hidden xl:flex items-center gap-5 text-sm font-semibold shrink-0">
@@ -115,7 +115,7 @@ export default function Layout() {
       {/* Footer */}
       <footer className="bg-white border-t border-border text-foreground/60 text-sm">
         <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-4">
-          <div className="text-foreground">
+          <div className="text-foreground min-w-0 max-w-full">
             <Logo />
           </div>
           <div className="text-xs leading-relaxed max-w-md">

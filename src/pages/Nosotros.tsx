@@ -8,7 +8,7 @@ export default function Nosotros() {
           <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">QUIÉNES SOMOS</div>
           <h2 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto [&>*]:min-w-0">
           <img
             src={mecanicoPhoto}
             alt="Mecánico de King Kong Autopartes trabajando en un desarme"

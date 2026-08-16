@@ -24,7 +24,7 @@ export default function Referencias() {
             </div>
           </div>
         </div>
-        <div className="grid md:grid-cols-3 gap-5">
+        <div className="grid md:grid-cols-3 gap-5 [&>*]:min-w-0">
           {RESEÑAS.map((r) => (
             <div key={r.nombre} className="bg-secondary border border-border p-6">
               <div className="flex mb-3">
