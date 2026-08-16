@@ -84,7 +84,7 @@ export default function Layout() {
       </header>
 
       <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
-        <SheetContent side="right" className="w-4/5">
+        <SheetContent side="right" className="w-4/5 max-w-[320px]">
           <SheetHeader>
             <SheetTitle>
               <Logo />
