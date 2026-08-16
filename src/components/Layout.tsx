@@ -50,30 +50,30 @@ export default function Layout() {
     <div className="min-h-screen bg-white text-foreground">
       {/* Nav */}
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
-          <Link to="/">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+          <Link to="/" className="shrink-0">
             <Logo size="lg" />
           </Link>
-          <nav className="hidden lg:flex items-center gap-6 text-sm font-semibold">
+          <nav className="hidden xl:flex items-center gap-5 text-sm font-semibold shrink-0">
             {NAV_LINKS.map((link) => (
               <NavLink
                 key={link.to}
                 to={link.to}
                 end={link.to === '/'}
                 className={({ isActive }) =>
-                  cn('hover:text-primary transition-colors', isActive && 'kk-pink')
+                  cn('whitespace-nowrap hover:text-primary transition-colors', isActive && 'kk-pink')
                 }
               >
                 {link.label}
               </NavLink>
             ))}
           </nav>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <ContactActions variant="header" />
             <Button
               variant="outline"
               size="icon"
-              className="lg:hidden border-border"
+              className="xl:hidden border-border"
               aria-label="Abrir menú"
               onClick={() => setMenuOpen(true)}
             >

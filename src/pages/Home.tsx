@@ -39,7 +39,7 @@ export default function Home() {
             aria-hidden="true"
             className="w-full h-full object-cover object-[center_35%] blur-lg scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/85 via-foreground/75 to-foreground/90" />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/55 to-foreground/75" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight kk-pink">
