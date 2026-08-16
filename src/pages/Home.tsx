@@ -1,8 +1,14 @@
 import { Link } from 'react-router-dom'
-import { Star, ShieldCheck, FileCheck } from 'lucide-react'
+import { Star, ShieldCheck, FileCheck, Truck, PhoneCall } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ContactActions } from '@/components/ContactActions'
 import heroPhoto from '@/assets/hero-estanteria.jpg'
+
+const HERO_FEATURES = [
+  { icon: ShieldCheck, label: 'Desarmadero oficial, piezas identificadas y con comprobante' },
+  { icon: Truck, label: 'Envíos a todo el país' },
+  { icon: PhoneCall, label: 'Atención directa, sin vueltas' },
+]
 
 const TEASERS = [
   {
@@ -29,7 +35,21 @@ export default function Home() {
       <section className="bg-white overflow-hidden">
         <div className="max-w-6xl mx-auto px-4 pt-16 pb-16 sm:pt-24 sm:pb-24 grid lg:grid-cols-[1.15fr_0.85fr] gap-12 lg:gap-16 items-center">
           <div>
-            <ContactActions variant="hero" />
+            <p className="text-xl sm:text-2xl text-foreground/70 leading-relaxed max-w-lg">
+              Repuestos usados de todas las marcas, al mejor precio, en el desarmadero
+              oficial de Coronel Suárez.
+            </p>
+            <div className="mt-8 space-y-3">
+              {HERO_FEATURES.map((f) => (
+                <div key={f.label} className="flex items-center gap-3">
+                  <f.icon className="w-5 h-5 kk-pink shrink-0" />
+                  <span className="text-sm font-semibold">{f.label}</span>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8">
+              <ContactActions variant="hero" />
+            </div>
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4 text-sm">
               <div className="flex items-center gap-2">
                 <div className="flex">
