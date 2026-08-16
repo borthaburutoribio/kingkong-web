@@ -1,4 +1,4 @@
-import { Cog, Wrench, Settings2, DoorOpen, ImageIcon } from 'lucide-react'
+import { Cog, Wrench, Settings2, DoorOpen } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import {
   Carousel,
@@ -7,6 +7,19 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from '@/components/ui/carousel'
+
+import fotoPuerta from '@/assets/repuestos/repuesto-puerta.jpg'
+import fotoCapotBlanco from '@/assets/repuestos/repuesto-capot-blanco.jpg'
+import fotoCapotNegro from '@/assets/repuestos/repuesto-capot-negro.jpg'
+import fotoMotorCaja from '@/assets/repuestos/repuesto-motor-caja.jpg'
+import fotoMotor from '@/assets/repuestos/repuesto-motor.jpg'
+import fotoCajaVelocidades from '@/assets/repuestos/repuesto-caja-velocidades.jpg'
+import fotoCompresorAc from '@/assets/repuestos/repuesto-compresor-ac.jpg'
+import fotoBombaNafta from '@/assets/repuestos/repuesto-bomba-nafta.jpg'
+import fotoBurroArranque from '@/assets/repuestos/repuesto-burro-arranque.jpg'
+import fotoCarroceria from '@/assets/repuestos/repuesto-carroceria.jpg'
+import fotoOperacion from '@/assets/repuestos/repuesto-operacion.jpg'
+import fotoLocal from '@/assets/repuestos/repuesto-local.jpg'
 
 const CATEGORIAS = [
   {
@@ -35,6 +48,21 @@ const CATEGORIAS = [
     titulo: 'Carrocería',
     items: ['Capot', 'Puertas', 'Portones', 'Baúles', 'Guardabarros'],
   },
+]
+
+const GALERIA = [
+  { src: fotoLocal, alt: 'Local de King Kong Autopartes en Coronel Suárez' },
+  { src: fotoMotor, alt: 'Motor completo en stock' },
+  { src: fotoPuerta, alt: 'Puerta de auto disponible' },
+  { src: fotoCapotBlanco, alt: 'Capot en buen estado' },
+  { src: fotoCompresorAc, alt: 'Compresor de aire acondicionado' },
+  { src: fotoCajaVelocidades, alt: 'Caja de velocidades' },
+  { src: fotoBombaNafta, alt: 'Bomba de nafta' },
+  { src: fotoBurroArranque, alt: 'Burro de arranque' },
+  { src: fotoCapotNegro, alt: 'Capot color oscuro en stock' },
+  { src: fotoCarroceria, alt: 'Puertas y guardabarros de distintos modelos' },
+  { src: fotoMotorCaja, alt: 'Motor con caja de velocidades' },
+  { src: fotoOperacion, alt: 'Trabajando en el desarme de un vehículo' },
 ]
 
 export default function Repuestos() {
@@ -74,21 +102,24 @@ export default function Repuestos() {
 
       {/* Carrusel de fotos */}
       <section className="bg-secondary py-20">
-        <div className="max-w-4xl mx-auto px-4">
+        <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-10">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">GALERÍA</div>
             <h2 className="font-display text-3xl sm:text-4xl uppercase">Nuestro Stock</h2>
           </div>
-          <Carousel className="w-full max-w-xl mx-auto">
+          <Carousel className="w-full max-w-2xl mx-auto" opts={{ loop: true }}>
             <CarouselContent>
-              {[1, 2, 3].map((n) => (
-                <CarouselItem key={n}>
-                  <div className="aspect-[4/3] border border-dashed border-primary/40 bg-white flex flex-col items-center justify-center gap-2 text-center px-6">
-                    <ImageIcon className="w-8 h-8 kk-pink opacity-50" />
-                    <span className="text-sm font-semibold text-foreground/40">
-                      Foto próximamente
-                    </span>
+              {GALERIA.map((foto) => (
+                <CarouselItem key={foto.src}>
+                  <div className="aspect-[4/3] overflow-hidden border border-border">
+                    <img
+                      src={foto.src}
+                      alt={foto.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
                   </div>
+                  <p className="mt-3 text-center text-sm text-foreground/60">{foto.alt}</p>
                 </CarouselItem>
               ))}
             </CarouselContent>
