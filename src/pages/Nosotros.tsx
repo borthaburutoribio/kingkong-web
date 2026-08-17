@@ -45,7 +45,7 @@ export default function Nosotros() {
         <div className="max-w-2xl mx-auto px-4 text-center">
           <HeartHandshake className="w-9 h-9 kk-pink mx-auto mb-4" />
           <p className="font-display text-xl sm:text-2xl leading-snug">
-            Más allá de lo legal, en King Kong trabajamos con la dedicación de siempre.
+            En King Kong trabajamos con la dedicación de siempre.
           </p>
           <p className="mt-3 text-foreground/60 leading-relaxed">
             Te atendemos de frente, te ayudamos a encontrar lo que necesitás y te lo dejamos al
