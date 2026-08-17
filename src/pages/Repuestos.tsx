@@ -1,14 +1,6 @@
-import { useRef } from 'react'
 import { Cog, Wrench, Settings2, DoorOpen } from 'lucide-react'
-import Autoplay from 'embla-carousel-autoplay'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from '@/components/ui/carousel'
+import { PhotoMarquee } from '@/components/PhotoMarquee'
 
 import fotoPuerta from '@/assets/repuestos/repuesto-puerta.jpg'
 import fotoCapotBlanco from '@/assets/repuestos/repuesto-capot-blanco.jpg'
@@ -102,8 +94,6 @@ const GALERIA = [
 ]
 
 export default function Repuestos() {
-  const autoplay = useRef(Autoplay({ delay: 3000, stopOnInteraction: false, stopOnMouseEnter: true }))
-
   return (
     <>
       <section className="bg-white py-20">
@@ -138,37 +128,13 @@ export default function Repuestos() {
         </div>
       </section>
 
-      {/* Carrusel de fotos */}
-      <section className="bg-secondary py-20">
-        <div className="max-w-5xl mx-auto px-4">
-          <div className="text-center mb-10">
-            <h2 className="font-display text-3xl sm:text-4xl uppercase">Galería</h2>
-            <p className="mt-3 text-foreground/60">Un poco de lo que tenemos.</p>
-          </div>
-          <Carousel
-            className="w-full max-w-2xl mx-auto"
-            opts={{ loop: true }}
-            plugins={[autoplay.current]}
-          >
-            <CarouselContent>
-              {GALERIA.map((foto, i) => (
-                <CarouselItem key={i}>
-                  <div className="aspect-[4/3] overflow-hidden border border-border">
-                    <img
-                      src={foto.src}
-                      alt={foto.alt}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                    />
-                  </div>
-                  <p className="mt-3 text-center text-sm text-foreground/60">{foto.alt}</p>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex border-border" />
-            <CarouselNext className="hidden sm:flex border-border" />
-          </Carousel>
+      {/* Galería: cinta continua */}
+      <section className="bg-secondary py-20 overflow-hidden">
+        <div className="text-center mb-10 px-4">
+          <h2 className="font-display text-3xl sm:text-4xl uppercase">Galería</h2>
+          <p className="mt-3 text-foreground/60">Un poco de lo que tenemos.</p>
         </div>
+        <PhotoMarquee photos={GALERIA} />
       </section>
     </>
   )
