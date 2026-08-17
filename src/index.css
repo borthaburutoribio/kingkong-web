@@ -68,3 +68,57 @@
   height: 0.14em;
   background: #ef78ba;
 }
+
+/* Galería: cinta continua de fotos (2 filas, sentidos opuestos) */
+.kk-marquee-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.kk-marquee-row {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
+.kk-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  animation: kk-marquee-scroll 50s linear infinite;
+  will-change: transform;
+}
+.kk-marquee-track-reverse {
+  animation-direction: reverse;
+}
+.kk-marquee-row:hover .kk-marquee-track {
+  animation-play-state: paused;
+}
+.kk-marquee-tile {
+  position: relative;
+  flex-shrink: 0;
+  width: 13rem;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 6px 16px rgba(87, 25, 59, 0.14);
+}
+@media (min-width: 640px) {
+  .kk-marquee-tile {
+    width: 16rem;
+  }
+}
+.kk-marquee-tile img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@keyframes kk-marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
