@@ -27,7 +27,7 @@ export function Logo({ className = '', size = 'md' }: { className?: string; size
         className={cn(imgSize, 'rounded-full shrink-0 object-cover')}
       />
       <div className="leading-none min-w-0">
-        <div className={cn('font-display tracking-tight kk-pink truncate', nameSize)}>
+        <div className={cn('font-display tracking-tight kk-pink', nameSize)}>
           King Kong Autopartes
         </div>
         <div className="text-[10px] tracking-[0.25em] font-semibold opacity-70 mt-1 truncate">
@@ -70,7 +70,9 @@ export default function Layout() {
             ))}
           </nav>
           <div className="flex items-center gap-2 shrink-0">
-            <ContactActions variant="header" />
+            <div className="hidden sm:flex">
+              <ContactActions variant="header" />
+            </div>
             <Button
               variant="outline"
               size="icon"
