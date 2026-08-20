@@ -10,9 +10,9 @@ import logoImg from '@/assets/logo.jpg'
 const NAV_LINKS = [
   { to: '/', label: 'Inicio' },
   { to: '/nosotros', label: 'Quiénes somos' },
-  { to: '/contacto', label: 'Teléfonos de Contacto' },
+  { to: '/contacto', label: 'Contacto' },
   { to: '/ubicacion', label: 'Nuestra ubicación' },
-  { to: '/repuestos', label: 'Nuestros Repuestos' },
+  { to: '/repuestos', label: 'Repuestos' },
   { to: '/referencias', label: 'Nuestras Referencias' },
 ]
 

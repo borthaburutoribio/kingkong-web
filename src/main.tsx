@@ -6,7 +6,7 @@ import App from './App.tsx'
 
 const fontLink = document.createElement('link')
 fontLink.rel = 'stylesheet'
-fontLink.href = 'https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700&display=swap'
+fontLink.href = 'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap'
 document.head.appendChild(fontLink)
 
 createRoot(document.getElementById('root')!).render(

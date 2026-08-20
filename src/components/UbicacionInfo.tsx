@@ -4,7 +4,7 @@ import { MAPS } from '@/lib/site-data'
 export function UbicacionInfo({ showTitle = true }: { showTitle?: boolean }) {
   return (
     <div className="bg-white text-foreground p-6 border border-border border-t-8 border-t-primary flex flex-col h-full">
-      {showTitle && <div className="font-display text-lg uppercase mb-4">Nuestra ubicación</div>}
+      {showTitle && <div className="font-display text-lg uppercase mb-4">Más información</div>}
       <div className="space-y-4 text-[15px] flex-1">
         <div className="flex gap-3">
           <MapPin className="w-5 h-5 kk-pink shrink-0 mt-0.5" />

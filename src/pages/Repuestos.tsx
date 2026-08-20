@@ -36,7 +36,7 @@ const CATEGORIAS = [
   {
     icon: Cog,
     titulo: 'Motores',
-    items: ['Motores completos o semiarmados'],
+    items: ['Motores completos', 'Motores semiarmados'],
   },
   {
     icon: Wrench,
@@ -100,10 +100,10 @@ export default function Repuestos() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">STOCK PERMANENTE</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase">Nuestros Repuestos</h2>
+            <h2 className="font-display text-3xl sm:text-4xl uppercase">Repuestos</h2>
             <p className="mt-4 text-foreground/60 leading-relaxed">
               Algunas de las autopartes que tenemos disponibles. Si no encontrás lo que buscás,
-              consultanos — seguro lo tenemos.
+              consultanos.
             </p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 [&>*]:min-w-0">

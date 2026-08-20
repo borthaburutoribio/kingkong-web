@@ -12,7 +12,7 @@ const TEASERS = [
   },
   {
     to: '/contacto',
-    title: 'Teléfonos de Contacto',
+    title: 'Contacto',
     desc: 'Llamanos o escribinos directo a Mauro, Agustín o Gonzalo.',
   },
   {
@@ -22,7 +22,7 @@ const TEASERS = [
   },
   {
     to: '/repuestos',
-    title: 'Nuestros Repuestos',
+    title: 'Repuestos',
     desc: 'Motores, periféricos, cajas y carrocería — lo que tenemos en stock.',
   },
   {
@@ -44,7 +44,7 @@ export default function Home() {
             aria-hidden="true"
             className="w-full h-full object-cover object-[center_35%] blur-lg scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/55 to-foreground/75" />
+          <div className="absolute inset-0 bg-gradient-to-b from-foreground/55 via-foreground/38 to-foreground/60" />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
           <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight kk-pink">

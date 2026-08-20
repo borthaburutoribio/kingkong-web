@@ -17,7 +17,7 @@ export default function Contacto() {
   return (
     <section className="bg-secondary py-20">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Teléfonos de Contacto</h2>
+        <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Contacto</h2>
 
         <div className="grid lg:grid-cols-2 gap-6 items-stretch [&>*]:min-w-0">
           {/* Columna 1: Llamar o escribir */}
@@ -56,9 +56,10 @@ export default function Contacto() {
             href="https://www.instagram.com/kingkongautopartes/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-white border border-border px-4 py-2.5 text-sm font-semibold hover:border-primary hover:text-primary transition-colors"
+            aria-label="Instagram"
+            className="inline-flex items-center justify-center w-11 h-11 bg-white border border-border hover:border-primary hover:text-primary transition-colors"
           >
-            <Instagram className="w-4 h-4" /> @kingkongautopartes
+            <Instagram className="w-5 h-5" />
           </a>
           <a
             href="https://www.tiktok.com/@kingkongautopartes"
