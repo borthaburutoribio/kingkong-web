@@ -44,17 +44,30 @@ export default function Home() {
             aria-hidden="true"
             className="w-full h-full object-cover object-[center_35%] blur-lg scale-110"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-foreground/55 via-foreground/38 to-foreground/60" />
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage:
+                'linear-gradient(to bottom, rgba(87,25,59,0.38), rgba(87,25,59,0.22), rgba(87,25,59,0.42))',
+            }}
+          />
         </div>
         <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
-          <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight kk-pink">
-            Repuestos de todas las marcas, al mejor precio, en el desarmadero oficial de
-            Coronel Suárez.
+          <h1 className="font-display kk-pink [text-shadow:0_2px_12px_rgba(87,25,59,0.65)]">
+            <span className="block text-2xl sm:text-3xl lg:text-4xl leading-tight">
+              Repuestos de todas las marcas
+            </span>
+            <span className="block text-5xl sm:text-6xl lg:text-7xl leading-none mt-2 sm:mt-3">
+              al mejor precio
+            </span>
+            <span className="block mt-4 text-sm sm:text-base tracking-[0.2em] uppercase font-semibold text-white/90">
+              Desarmadero oficial de Coronel Suárez
+            </span>
           </h1>
           <div className="mt-10 flex justify-center">
             <ContactActions variant="hero" />
           </div>
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-white/80">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-sm text-white/90 [text-shadow:0_1px_6px_rgba(87,25,59,0.6)]">
             <div className="flex items-center gap-2">
               <div className="flex">
                 {[...Array(5)].map((_, i) => (
