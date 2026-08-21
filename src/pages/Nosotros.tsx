@@ -18,7 +18,7 @@ export default function Nosotros() {
             />
             <div className="space-y-4 text-foreground/60 leading-relaxed text-[15px]">
               <p>
-                <span className="font-bold text-foreground">KING KONG AUTOPARTES CORONEL SUAREZ SAS</span> es
+                <span className="font-bold text-foreground whitespace-nowrap text-[11px] sm:text-[15px] tracking-tight sm:tracking-normal align-baseline">KING KONG AUTOPARTES CORONEL SUAREZ SAS</span> es
                 el primer centro de reciclado de automotores dados de baja y comercialización de las
                 autopartes recuperadas, ubicado en la Ciudad de Coronel Suárez, calle Eucaliptus Nº
                 4036, Provincia de Buenos Aires.
