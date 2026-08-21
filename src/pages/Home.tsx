@@ -117,6 +117,16 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Resumen rápido (TL;DR) */}
+      <section className="bg-white py-8 border-b border-border">
+        <p className="max-w-2xl mx-auto px-4 text-center text-sm sm:text-base text-foreground/70 leading-relaxed">
+          <strong className="text-foreground">En resumen:</strong> somos el desarmadero oficial de
+          Coronel Suárez, con stock permanente de motores, cajas, carrocería y repuestos de todas las
+          marcas — piezas identificadas, con comprobante, y envío a todo el país. Consultá por
+          WhatsApp o llamada y te decimos al toque si lo tenemos.
+        </p>
+      </section>
+
       {/* Franja legal compacta */}
       <section className="kk-bg-pink">
         <div className="max-w-6xl mx-auto px-4 py-8 flex flex-wrap items-center justify-between gap-x-10 gap-y-4 text-foreground">
