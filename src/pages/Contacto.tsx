@@ -39,9 +39,9 @@ export default function Contacto() {
           {/* Columna 1: Llamar o escribir */}
           <div className="bg-white border border-border p-6 flex flex-col">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-4">LLAMANOS O ESCRIBINOS</div>
-            <div className="space-y-3">
+            <ul className="space-y-3">
               {Object.values(WSP).map((c) => (
-                <div
+                <li
                   key={c.nombre}
                   className="flex flex-wrap items-center justify-between gap-3 border border-border px-4 py-3.5"
                 >
@@ -57,9 +57,9 @@ export default function Contacto() {
                     </div>
                   </div>
                   <ContactActions contact={c} variant="compact" />
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           {/* Columna 2: info práctica (misma que en Nuestra ubicación) */}

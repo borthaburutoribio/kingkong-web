@@ -5,36 +5,36 @@ export function UbicacionInfo({ showTitle = true }: { showTitle?: boolean }) {
   return (
     <div className="bg-white text-foreground p-6 border border-border border-t-8 border-t-primary flex flex-col h-full">
       {showTitle && <div className="font-display text-lg uppercase mb-4">Más información</div>}
-      <div className="space-y-4 text-[15px] flex-1">
-        <div className="flex gap-3">
+      <ul className="space-y-4 text-[15px] flex-1">
+        <li className="flex gap-3">
           <MapPin className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Eucaliptus 4036, Coronel Suárez</div>
             <div className="text-sm text-foreground/60">Provincia de Buenos Aires (B7540)</div>
           </div>
-        </div>
-        <div className="flex gap-3">
+        </li>
+        <li className="flex gap-3">
           <Clock className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Lunes a viernes, 8 a 16 hs</div>
             <div className="text-sm text-foreground/60">Horario de corrido</div>
           </div>
-        </div>
-        <div className="flex gap-3">
+        </li>
+        <li className="flex gap-3">
           <Truck className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Envíos a todo el país</div>
             <div className="text-sm text-foreground/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
           </div>
-        </div>
-        <div className="flex gap-3">
+        </li>
+        <li className="flex gap-3">
           <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Formas de pago</div>
             <div className="text-sm text-foreground/60">Efectivo, transferencia y Mercado Pago.</div>
           </div>
-        </div>
-      </div>
+        </li>
+      </ul>
       <a
         href={MAPS}
         target="_blank"
