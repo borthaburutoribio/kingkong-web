@@ -33,7 +33,7 @@ export default function Contacto() {
   return (
     <section className="bg-secondary py-20">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Contacto</h2>
+        <h1 className="font-display text-3xl sm:text-4xl uppercase mb-10">Contacto</h1>
 
         <div className="grid lg:grid-cols-2 gap-6 items-stretch [&>*]:min-w-0">
           {/* Columna 1: Llamar o escribir */}

@@ -4,7 +4,7 @@ export default function Ubicacion() {
   return (
     <section className="bg-secondary py-20">
       <div className="max-w-6xl mx-auto px-4">
-        <h2 className="font-display text-3xl sm:text-4xl uppercase mb-10">Nuestra ubicación</h2>
+        <h1 className="font-display text-3xl sm:text-4xl uppercase mb-10">Nuestra ubicación</h1>
         <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-6 items-stretch">
           <div className="min-w-0">
             <UbicacionInfo showTitle={false} />

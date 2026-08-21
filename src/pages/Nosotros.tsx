@@ -8,7 +8,7 @@ export default function Nosotros() {
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-12">
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">QUIÉNES SOMOS</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h2>
+            <h1 className="font-display text-3xl sm:text-4xl uppercase">King Kong Autopartes</h1>
           </div>
           <div className="grid md:grid-cols-2 gap-10 items-center max-w-4xl mx-auto [&>*]:min-w-0">
             <img

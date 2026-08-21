@@ -8,7 +8,7 @@ export default function Referencias() {
         <div className="flex flex-wrap items-end justify-between gap-6 mb-10">
           <div>
             <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">CLIENTES REALES</div>
-            <h2 className="font-display text-3xl sm:text-4xl uppercase">Nuestras Referencias</h2>
+            <h1 className="font-display text-3xl sm:text-4xl uppercase">Nuestras Referencias</h1>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex">

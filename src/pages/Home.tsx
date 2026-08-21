@@ -1,8 +1,41 @@
 import { Link } from 'react-router-dom'
-import { Star, ShieldCheck, FileCheck } from 'lucide-react'
+import { Star, ShieldCheck, FileCheck, Share2 } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ContactActions } from '@/components/ContactActions'
 import heroBg from '@/assets/hero-bg-pasillo.jpg'
+
+const FAQS = [
+  {
+    q: '¿Hacen envíos a todo el país?',
+    a: 'Sí, enviamos repuestos a todo el país. Consultanos por WhatsApp el costo y tiempo de envío según tu ubicación.',
+  },
+  {
+    q: '¿Los repuestos tienen comprobante?',
+    a: 'Sí, todas las piezas se entregan identificadas y con su comprobante correspondiente, como corresponde a un desarmadero oficial inscripto.',
+  },
+  {
+    q: '¿Cuál es el horario de atención?',
+    a: 'Atendemos de lunes a viernes de 8:00 a 16:00 en Eucaliptus 4036, Coronel Suárez.',
+  },
+  {
+    q: '¿Son un desarmadero habilitado?',
+    a: 'Sí, estamos inscriptos en el DNRPA (registro N° 3932) y adheridos a CARVA. Podés verificarlo vos mismo en Argentina.gob.ar.',
+  },
+  {
+    q: '¿Cómo consulto por un repuesto puntual?',
+    a: 'Por WhatsApp o llamando directamente a Mauro, Agustín o Gonzalo — los tres contactos están en la sección Contacto.',
+  },
+]
+
+const FAQ_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+}
 
 const TEASERS = [
   {
@@ -124,6 +157,61 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* FAQ */}
+      <section className="bg-white pt-4 pb-16" id="faq">
+        <div className="max-w-3xl mx-auto px-4">
+          <h2 className="font-display text-2xl sm:text-3xl uppercase text-center mb-6">Preguntas frecuentes</h2>
+          <div className="space-y-3">
+            {FAQS.map((f) => (
+              <details key={f.q} className="group bg-white border border-border px-5 py-4">
+                <summary className="flex items-center justify-between gap-4 cursor-pointer font-bold text-sm sm:text-base list-none">
+                  {f.q}
+                  <span className="kk-pink shrink-0 transition-transform group-open:rotate-45 text-xl leading-none">+</span>
+                </summary>
+                <p className="mt-3 text-sm text-foreground/60 leading-relaxed">{f.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}
+        />
+      </section>
+
+      {/* Compartir */}
+      <div className="max-w-6xl mx-auto px-4 pb-14 flex justify-center">
+        <ShareButton />
+      </div>
     </>
+  )
+}
+
+function ShareButton() {
+  const handleShare = async () => {
+    const shareData = {
+      title: 'King Kong Autopartes — Repuestos en Coronel Suárez',
+      text: 'Repuestos y autopartes de todas las marcas en Coronel Suárez.',
+      url: 'https://kingkongautopartes.com/',
+    }
+    if (navigator.share) {
+      try {
+        await navigator.share(shareData)
+      } catch {
+        // usuario canceló el share, no hacer nada
+      }
+    } else {
+      await navigator.clipboard.writeText(shareData.url)
+      window.alert('Link copiado: ' + shareData.url)
+    }
+  }
+  return (
+    <button
+      onClick={handleShare}
+      className="inline-flex items-center gap-2 border border-border px-5 py-2.5 text-sm font-semibold hover:border-primary hover:text-primary transition-colors"
+    >
+      <Share2 className="w-4 h-4" /> Compartir
+    </button>
   )
 }
