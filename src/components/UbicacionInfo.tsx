@@ -31,7 +31,11 @@ export function UbicacionInfo({ showTitle = true }: { showTitle?: boolean }) {
           <Banknote className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Formas de pago</div>
-            <div className="text-sm text-foreground/60">Efectivo, transferencia y Mercado Pago.</div>
+            <ul className="text-sm text-foreground/60 list-disc list-inside">
+              <li>Efectivo</li>
+              <li>Transferencia</li>
+              <li>Mercado Pago</li>
+            </ul>
           </div>
         </li>
       </ul>

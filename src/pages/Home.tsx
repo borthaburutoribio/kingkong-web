@@ -87,13 +87,13 @@ export default function Home() {
         </div>
         <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
           <h1 className="font-display kk-pink [text-shadow:0_2px_12px_rgba(87,25,59,0.65)]">
-            <span className="block text-2xl sm:text-3xl lg:text-4xl leading-tight">
+            <span className="block whitespace-nowrap text-lg sm:text-3xl lg:text-4xl leading-tight">
               Repuestos de todas las marcas
             </span>
-            <span className="block text-5xl sm:text-6xl lg:text-7xl leading-none mt-2 sm:mt-3">
+            <span className="block whitespace-nowrap text-4xl sm:text-6xl lg:text-7xl leading-none mt-2 sm:mt-3">
               al mejor precio
             </span>
-            <span className="block mt-4 text-sm sm:text-base tracking-[0.2em] uppercase font-semibold text-white/90">
+            <span className="block whitespace-nowrap mt-4 text-[11px] sm:text-sm lg:text-base tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] uppercase font-semibold text-white/90">
               Desarmadero oficial de Coronel Suárez
             </span>
           </h1>
@@ -115,16 +115,6 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
-
-      {/* Resumen rápido (TL;DR) */}
-      <section className="bg-white py-8 border-b border-border">
-        <p className="max-w-2xl mx-auto px-4 text-center text-sm sm:text-base text-foreground/70 leading-relaxed">
-          <strong className="text-foreground">En resumen:</strong> somos el desarmadero oficial de
-          Coronel Suárez, con stock permanente de motores, cajas, carrocería y repuestos de todas las
-          marcas — piezas identificadas, con comprobante, y envío a todo el país. Consultá por
-          WhatsApp o llamada y te decimos al toque si lo tenemos.
-        </p>
       </section>
 
       {/* Franja legal compacta */}

@@ -30,8 +30,9 @@ export function Logo({ className = '', size = 'md' }: { className?: string; size
         <div className={cn('font-display tracking-tight kk-pink', nameSize)}>
           King Kong Autopartes
         </div>
-        <div className="text-[10px] tracking-[0.2em] sm:tracking-[0.25em] font-semibold opacity-70 mt-1 whitespace-normal sm:whitespace-nowrap">
-          DESARMADERO OFICIAL · CORONEL SUÁREZ
+        <div className="text-[10px] tracking-[0.2em] sm:tracking-[0.25em] font-semibold opacity-70 mt-1 leading-[1.6] whitespace-nowrap">
+          <div>DESARMADERO OFICIAL</div>
+          <div>CORONEL SUÁREZ</div>
         </div>
       </div>
     </div>
