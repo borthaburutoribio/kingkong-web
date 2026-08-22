@@ -24,7 +24,7 @@ export function UbicacionInfo({ showTitle = true }: { showTitle?: boolean }) {
           <Truck className="w-5 h-5 kk-pink shrink-0 mt-0.5" />
           <div>
             <div className="font-bold">Envíos a todo el país</div>
-            <div className="text-sm text-foreground/60">¿No sos de Suárez? Te lo despachamos por expreso.</div>
+            <div className="text-sm text-foreground/60">¿No sos de Suárez? Te lo despachamos por expreso</div>
           </div>
         </li>
         <li className="flex gap-3">
