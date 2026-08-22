@@ -11,7 +11,7 @@ function MarqueeRow({ photos, reverse }: { photos: Foto[]; reverse?: boolean }) 
       <div className={cn('kk-marquee-track', reverse && 'kk-marquee-track-reverse')}>
         {[...photos, ...photos].map((foto, i) => (
           <div key={i} className="kk-marquee-tile">
-            <img src={foto.src} alt={foto.alt} loading="lazy" />
+            <img src={foto.src} alt={foto.alt} />
           </div>
         ))}
       </div>
