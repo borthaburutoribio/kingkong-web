@@ -90,15 +90,15 @@ export default function Home() {
         <div className="relative pt-10 sm:pt-14">
           <PhotoMarquee photos={GALERIA} rows={1} />
         </div>
-        <div className="relative max-w-3xl mx-auto px-4 pt-14 sm:pt-16 pb-24 sm:pb-32 text-center">
+        <div className="relative max-w-4xl mx-auto px-2 sm:px-4 pt-14 sm:pt-16 pb-24 sm:pb-32 text-center">
           <h1 className="font-display kk-pink [text-shadow:0_2px_12px_rgba(87,25,59,0.65)]">
-            <span className="block whitespace-nowrap text-[17px] sm:text-4xl lg:text-[42px] leading-tight">
+            <span className="block whitespace-nowrap tracking-tighter text-[20px] sm:text-[40px] lg:text-5xl leading-tight">
               Repuestos de todas las marcas
             </span>
-            <span className="block whitespace-nowrap text-xl sm:text-3xl lg:text-4xl leading-none mt-2 sm:mt-3">
+            <span className="block whitespace-nowrap text-2xl sm:text-4xl lg:text-[43px] leading-none mt-2 sm:mt-3">
               al mejor precio
             </span>
-            <span className="block whitespace-nowrap mt-4 text-[10px] sm:text-sm lg:text-base tracking-[0.05em] sm:tracking-[0.15em] lg:tracking-[0.2em] uppercase font-semibold text-white/90">
+            <span className="block whitespace-nowrap mt-4 text-[11px] sm:text-base lg:text-lg tracking-[0.05em] sm:tracking-[0.15em] lg:tracking-[0.2em] uppercase font-semibold text-white/90">
               Desarmadero oficial de Coronel Suárez
             </span>
           </h1>
