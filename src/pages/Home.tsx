@@ -88,14 +88,14 @@ export default function Home() {
           />
         </div>
         <div className="relative pt-10 sm:pt-14">
-          <PhotoMarquee photos={GALERIA} rows={1} size="sm" />
+          <PhotoMarquee photos={GALERIA} rows={1} />
         </div>
-        <div className="relative max-w-3xl mx-auto px-4 pt-8 sm:pt-10 pb-24 sm:pb-32 text-center">
+        <div className="relative max-w-3xl mx-auto px-4 pt-14 sm:pt-16 pb-24 sm:pb-32 text-center">
           <h1 className="font-display kk-pink [text-shadow:0_2px_12px_rgba(87,25,59,0.65)]">
             <span className="block whitespace-nowrap text-lg sm:text-3xl lg:text-4xl leading-tight">
               Repuestos de todas las marcas
             </span>
-            <span className="block whitespace-nowrap text-4xl sm:text-6xl lg:text-7xl leading-none mt-2 sm:mt-3">
+            <span className="block whitespace-nowrap text-3xl sm:text-5xl lg:text-6xl leading-none mt-2 sm:mt-3">
               al mejor precio
             </span>
             <span className="block whitespace-nowrap mt-4 text-[11px] sm:text-sm lg:text-base tracking-[0.1em] sm:tracking-[0.15em] lg:tracking-[0.2em] uppercase font-semibold text-white/90">

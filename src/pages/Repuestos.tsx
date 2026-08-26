@@ -1,7 +1,7 @@
 import { Cog, Wrench, Settings2, DoorOpen } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card'
 import { PhotoMarquee } from '@/components/PhotoMarquee'
-import { GALERIA } from '@/lib/repuestos-gallery'
+import { REPUESTOS_GALERIA } from '@/lib/repuestos-gallery'
 
 const CATEGORIAS = [
   {
@@ -73,7 +73,7 @@ export default function Repuestos() {
           <h2 className="font-display text-3xl sm:text-4xl uppercase">Galería</h2>
           <p className="mt-3 text-foreground/60">Un poco de lo que tenemos.</p>
         </div>
-        <PhotoMarquee photos={GALERIA} />
+        <PhotoMarquee photos={REPUESTOS_GALERIA} />
       </section>
     </>
   )

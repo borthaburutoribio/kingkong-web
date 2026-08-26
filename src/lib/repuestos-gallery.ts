@@ -47,6 +47,9 @@ import fotoMotorEnDetalle from '@/assets/repuestos/repuesto-motor-en-detalle.jpg
 import fotoMotorRenaultDuster1 from '@/assets/repuestos/repuesto-motor-renault-duster-1.jpg'
 import fotoMotorRenaultDuster2 from '@/assets/repuestos/repuesto-motor-renault-duster-2.jpg'
 import fotoMotorCompletoGaleria from '@/assets/repuestos/repuesto-motor-completo-galeria.jpg'
+import fotoCartelFrenteLocal from '@/assets/repuestos/repuesto-cartel-frente-local.jpg'
+import fotoEquipoConPuerta from '@/assets/repuestos/repuesto-equipo-con-puerta.jpg'
+import fotoZonaDeDesarme from '@/assets/repuestos/repuesto-zona-de-desarme.jpg'
 
 export interface Foto {
   src: string
@@ -103,4 +106,32 @@ export const GALERIA: Foto[] = [
   { src: fotoMotorRenaultDuster1, alt: 'Motor para Renault Duster' },
   { src: fotoMotorRenaultDuster2, alt: 'Motor para Renault Duster' },
   { src: fotoMotorCompletoGaleria, alt: 'Motor completo en stock' },
+  { src: fotoCartelFrenteLocal, alt: 'Cartel de King Kong Autopartes en el frente del local' },
+  { src: fotoEquipoConPuerta, alt: 'El equipo de King Kong Autopartes llevando una puerta en el depósito' },
+  { src: fotoZonaDeDesarme, alt: 'Pared de herramientas en la zona de desarme' },
+]
+
+// Subconjunto más chico para la sección Galería de la página Repuestos
+// (la página de Inicio usa el GALERIA completo en el carrusel del hero).
+export const REPUESTOS_GALERIA: Foto[] = [
+  { src: fotoMotorCompletoEnTaller, alt: 'Motor completo en el taller' },
+  { src: fotoAlternadorRenaultClio, alt: 'Alternador para Renault Clio' },
+  { src: fotoDiferencialChevroletCorsa, alt: 'Diferencial para Chevrolet Corsa 1.6' },
+  { src: fotoEquipoKingKongConAlternador, alt: 'El equipo de King Kong Autopartes con un alternador en stock' },
+  { src: fotoBurroDeArranque1, alt: 'Motor de arranque (burro de arranque)' },
+  { src: fotoCompresorAcFordFocus, alt: 'Compresor de aire acondicionado para Ford Focus' },
+  { src: fotoGuardabarrosEnEstanteria, alt: 'Guardabarros en estantería' },
+  { src: fotoMotorDesarmado, alt: 'Motor desarmado' },
+  { src: fotoModulosElectronicosEnStock, alt: 'Módulos electrónicos en stock' },
+  { src: fotoTableroVolkswagenSpacefox, alt: 'Tablero de instrumentos para Volkswagen SpaceFox' },
+  { src: fotoMotorToyotaCorolla1, alt: 'Motor de Toyota Corolla' },
+  { src: fotoCapotEnStock, alt: 'Capot en stock' },
+  { src: fotoPuertaDeAuto, alt: 'Puerta de auto en stock' },
+  { src: fotoBlowerHondaFit, alt: 'Motor de aire para Honda Fit' },
+  { src: fotoComputadorasYModulos, alt: 'Computadoras y módulos electrónicos' },
+  { src: fotoMotorConCajaVelocidades, alt: 'Motor con caja de velocidades' },
+  { src: fotoDepositoDeRepuestos, alt: 'Nuestro depósito de repuestos' },
+  { src: fotoMotorRenaultMegane, alt: 'Motor para Renault Megane' },
+  { src: fotoZonaDeDesarme, alt: 'Pared de herramientas en la zona de desarme' },
+  { src: fotoCartelFrenteLocal, alt: 'Cartel de King Kong Autopartes en el frente del local' },
 ]
