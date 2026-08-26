@@ -50,6 +50,7 @@ import fotoMotorCompletoGaleria from '@/assets/repuestos/repuesto-motor-completo
 import fotoCartelFrenteLocal from '@/assets/repuestos/repuesto-cartel-frente-local.jpg'
 import fotoEquipoConPuerta from '@/assets/repuestos/repuesto-equipo-con-puerta.jpg'
 import fotoZonaDeDesarme from '@/assets/repuestos/repuesto-zona-de-desarme.jpg'
+import fotoCamperaEquipo from '@/assets/repuestos/repuesto-campera-equipo.jpg'
 
 export interface Foto {
   src: string
@@ -66,6 +67,7 @@ export const GALERIA: Foto[] = [
   { src: fotoDiferencialChevroletCorsa, alt: 'Diferencial para Chevrolet Corsa 1.6' },
   { src: fotoAlternadorListoParaLaVenta, alt: 'Alternador listo para la venta' },
   { src: fotoZonaDeDesarme, alt: 'Pared de herramientas en la zona de desarme' },
+  { src: fotoCamperaEquipo, alt: 'Campera del equipo de King Kong Autopartes' },
   { src: fotoEquipoKingKongConAlternador, alt: 'El equipo de King Kong Autopartes con un alternador en stock' },
   { src: fotoBurroDeArranque1, alt: 'Motor de arranque (burro de arranque)' },
   { src: fotoBurroDeArranque2, alt: 'Motor de arranque en stock' },
