@@ -57,12 +57,15 @@ export interface Foto {
 }
 
 export const GALERIA: Foto[] = [
+  { src: fotoCartelFrenteLocal, alt: 'Cartel de King Kong Autopartes en el frente del local' },
   { src: fotoMotorCompletoEnTaller, alt: 'Motor completo en el taller' },
   { src: fotoAlternadorRenaultClio, alt: 'Alternador para Renault Clio' },
   { src: fotoAlternadorChevroletClassic, alt: 'Alternador para Chevrolet Classic 1.6' },
+  { src: fotoEquipoConPuerta, alt: 'El equipo de King Kong Autopartes llevando una puerta en el depósito' },
   { src: fotoAlternadorEnStock, alt: 'Alternador en stock' },
   { src: fotoDiferencialChevroletCorsa, alt: 'Diferencial para Chevrolet Corsa 1.6' },
   { src: fotoAlternadorListoParaLaVenta, alt: 'Alternador listo para la venta' },
+  { src: fotoZonaDeDesarme, alt: 'Pared de herramientas en la zona de desarme' },
   { src: fotoEquipoKingKongConAlternador, alt: 'El equipo de King Kong Autopartes con un alternador en stock' },
   { src: fotoBurroDeArranque1, alt: 'Motor de arranque (burro de arranque)' },
   { src: fotoBurroDeArranque2, alt: 'Motor de arranque en stock' },
@@ -106,9 +109,6 @@ export const GALERIA: Foto[] = [
   { src: fotoMotorRenaultDuster1, alt: 'Motor para Renault Duster' },
   { src: fotoMotorRenaultDuster2, alt: 'Motor para Renault Duster' },
   { src: fotoMotorCompletoGaleria, alt: 'Motor completo en stock' },
-  { src: fotoCartelFrenteLocal, alt: 'Cartel de King Kong Autopartes en el frente del local' },
-  { src: fotoEquipoConPuerta, alt: 'El equipo de King Kong Autopartes llevando una puerta en el depósito' },
-  { src: fotoZonaDeDesarme, alt: 'Pared de herramientas en la zona de desarme' },
 ]
 
 // Subconjunto más chico para la sección Galería de la página Repuestos
