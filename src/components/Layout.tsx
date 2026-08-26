@@ -123,8 +123,8 @@ export default function Layout() {
             <Logo />
           </div>
           <div className="text-xs leading-relaxed max-w-md">
-            King Kong Autopartes Coronel Suárez SAS · Desarmadero oficial inscripto en DNRPA
-            (registro N° 3932) · Autopartes con oblea RUDAC y factura.
+            King Kong Autopartes Coronel Suárez SAS · Desarmadero oficial inscripto en DNRPA ·
+            Autopartes con oblea RUDAC y factura.
           </div>
         </div>
       </footer>

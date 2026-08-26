@@ -21,7 +21,7 @@ const FAQS = [
   },
   {
     q: '¿Son un desarmadero habilitado?',
-    a: 'Sí, estamos inscriptos en el DNRPA (registro N° 3932) y adheridos a CARVA. Podés verificarlo vos mismo en Argentina.gob.ar.',
+    a: 'Sí, estamos inscriptos en el DNRPA y adheridos a CARVA. Podés verificarlo vos mismo en Argentina.gob.ar.',
   },
   {
     q: '¿Cómo consulto por un repuesto puntual?',
@@ -130,18 +130,13 @@ export default function Home() {
             <div>
               <div className="font-display text-base uppercase">Desarmadero oficial</div>
               <div className="text-sm opacity-80">
-                Inscriptos en DNRPA (registro N° 3932) y adheridos a CARVA. Piezas identificadas y con comprobante.
+                Inscriptos en DNRPA y adheridos a CARVA. Piezas identificadas y con comprobante.
               </div>
             </div>
           </div>
-          <a
-            href="https://www.dnrpa.gov.ar/desarmadero/consulta_inscriptos_web.php"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-foreground text-white px-5 py-3 font-bold text-sm hover:opacity-85 transition-opacity"
-          >
-            <FileCheck className="w-4 h-4" /> Verificalo en Argentina.gob.ar
-          </a>
+          <div className="inline-flex items-center gap-2 font-bold text-sm">
+            <FileCheck className="w-4 h-4 shrink-0" /> Verificalo en Argentina.gob.ar
+          </div>
         </div>
       </section>
 
