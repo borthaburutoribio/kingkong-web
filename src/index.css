@@ -123,3 +123,18 @@
     transform: translateX(-50%);
   }
 }
+.kk-marquee-track-sm {
+  gap: 0.625rem;
+  animation-duration: 38s;
+}
+.kk-marquee-tile-sm {
+  width: 4.5rem;
+  border-radius: 0.5rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+@media (min-width: 640px) {
+  .kk-marquee-tile-sm {
+    width: 6rem;
+  }
+}

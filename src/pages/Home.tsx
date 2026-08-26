@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import { Star, ShieldCheck, FileCheck, Share2 } from 'lucide-react'
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { ContactActions } from '@/components/ContactActions'
+import { PhotoMarquee } from '@/components/PhotoMarquee'
+import { GALERIA } from '@/lib/repuestos-gallery'
 import heroBg from '@/assets/hero-bg-pasillo.jpg'
 
 const FAQS = [
@@ -85,7 +87,10 @@ export default function Home() {
             }}
           />
         </div>
-        <div className="relative max-w-3xl mx-auto px-4 py-24 sm:py-32 text-center">
+        <div className="relative pt-10 sm:pt-14">
+          <PhotoMarquee photos={GALERIA} rows={1} size="sm" />
+        </div>
+        <div className="relative max-w-3xl mx-auto px-4 pt-8 sm:pt-10 pb-24 sm:pb-32 text-center">
           <h1 className="font-display kk-pink [text-shadow:0_2px_12px_rgba(87,25,59,0.65)]">
             <span className="block whitespace-nowrap text-lg sm:text-3xl lg:text-4xl leading-tight">
               Repuestos de todas las marcas
