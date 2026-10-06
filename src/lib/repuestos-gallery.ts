@@ -17,7 +17,7 @@ import fotoMotorDesarmado from '@/assets/repuestos/repuesto-motor-desarmado.jpg'
 import fotoMotorEnDeposito1 from '@/assets/repuestos/repuesto-motor-en-deposito-1.jpg'
 import fotoMotorConVentilador from '@/assets/repuestos/repuesto-motor-con-ventilador.jpg'
 import fotoCompresoresAcEnPallet from '@/assets/repuestos/repuesto-compresores-ac-en-pallet.jpg'
-import fotoCompresorRenaultClio from '@/assets/repuestos/repuesto-compresor-renault-clio.jpg'
+import fotoBombaDeNaftaRenaultClio from '@/assets/repuestos/repuesto-bomba-de-nafta-renault-clio.jpg'
 import fotoModulosElectronicosEnStock from '@/assets/repuestos/repuesto-modulos-electronicos-en-stock.jpg'
 import fotoCompresorAcEnTaller from '@/assets/repuestos/repuesto-compresor-ac-en-taller.jpg'
 import fotoTableroVolkswagenSpacefox from '@/assets/repuestos/repuesto-tablero-volkswagen-spacefox.jpg'
@@ -82,7 +82,7 @@ export const GALERIA: Foto[] = [
   { src: fotoMotorEnDeposito1, alt: 'Motor en nuestro depósito' },
   { src: fotoMotorConVentilador, alt: 'Motor con ventilador de refrigeración' },
   { src: fotoCompresoresAcEnPallet, alt: 'Compresores de aire acondicionado en stock' },
-  { src: fotoCompresorRenaultClio, alt: 'Compresor para Renault Clio 1.6' },
+  { src: fotoBombaDeNaftaRenaultClio, alt: 'Bomba de nafta para Renault Clio 1.6' },
   { src: fotoModulosElectronicosEnStock, alt: 'Módulos electrónicos en stock' },
   { src: fotoCompresorAcEnTaller, alt: 'Compresor de aire acondicionado en el taller' },
   { src: fotoTableroVolkswagenSpacefox, alt: 'Tablero de instrumentos para Volkswagen SpaceFox' },
