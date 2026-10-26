@@ -127,6 +127,16 @@ export default function Layout() {
             Autopartes con oblea RUDAC y factura.
           </div>
         </div>
+        <div className="pb-4 text-center">
+          <a
+            href="https://tranqueraweb.com.ar"
+            target="_blank"
+            rel="noopener"
+            className="text-[10px] tracking-[0.2em] uppercase text-foreground/25 hover:text-foreground/50 transition-colors"
+          >
+            Tranquera Digital
+          </a>
+        </div>
       </footer>
 
       <FloatingContactButtons />
