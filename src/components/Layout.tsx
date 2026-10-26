@@ -132,9 +132,11 @@ export default function Layout() {
             href="https://tranqueraweb.com.ar"
             target="_blank"
             rel="noopener"
-            className="text-[10px] tracking-[0.2em] uppercase text-foreground/25 hover:text-foreground/50 transition-colors"
+            aria-label="Hecho por Tranquera Digital"
+            className="inline-flex items-center gap-[7px] text-[11px] tracking-[0.08em] text-foreground/30 hover:text-foreground/55 transition-colors"
           >
-            Tranquera Digital
+            <svg viewBox="0 0 31 34" fill="currentColor" aria-hidden="true" className="w-[13px] h-[14px]"><path fillRule="evenodd" d="M0 0H31V7H23V34H10.5V7H0ZM18 7H23L16 14H15V10ZM18 16H23L16 23H15V19ZM18 25H23L16 32H15V28Z"/></svg>
+            <span><b className="font-bold">TRANQUERA</b> DIGITAL</span>
           </a>
         </div>
       </footer>
