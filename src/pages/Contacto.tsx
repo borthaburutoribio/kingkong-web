@@ -1,7 +1,8 @@
-import { Phone } from 'lucide-react'
+import { Mail, Phone } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import { ContactActions } from '@/components/ContactActions'
 import { UbicacionInfo } from '@/components/UbicacionInfo'
-import { WSP } from '@/lib/site-data'
+import { EMAIL, EMAIL_HREF, WSP } from '@/lib/site-data'
 
 function Instagram({ className = '' }: { className?: string }) {
   return (
@@ -60,6 +61,31 @@ export default function Contacto() {
                 </li>
               ))}
             </ul>
+
+            {/* Mail: para presupuestos con fotos, talleres y envíos */}
+            <div className="mt-6 pt-6 border-t border-border">
+              <div className="text-xs font-bold tracking-[0.25em] kk-pink mb-3">O MANDANOS UN MAIL</div>
+              <div className="flex flex-wrap items-center justify-between gap-3 border border-border px-4 py-3.5">
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-full bg-primary flex items-center justify-center text-primary-foreground shrink-0">
+                    <Mail className="w-4 h-4" />
+                  </div>
+                  <div className="min-w-0">
+                    <a href={EMAIL_HREF} className="font-bold text-sm hover:text-primary transition-colors">
+                      {EMAIL.split('@')[0]}<wbr />@{EMAIL.split('@')[1]}
+                    </a>
+                    <div className="text-xs text-foreground/50">
+                      Ideal para pedir presupuesto con fotos de la pieza o los datos del auto
+                    </div>
+                  </div>
+                </div>
+                <Button asChild size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
+                  <a href={EMAIL_HREF}>
+                    <Mail /> Escribir mail
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
 
           {/* Columna 2: info práctica (misma que en Nuestra ubicación) */}

@@ -6,6 +6,7 @@ import { ContactActions, FloatingContactButtons } from '@/components/ContactActi
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from '@/components/ui/sheet'
 import logoImg from '@/assets/logo.jpg'
+import { EMAIL, EMAIL_HREF } from '@/lib/site-data'
 
 const NAV_LINKS = [
   { to: '/', label: 'Inicio' },
@@ -125,6 +126,9 @@ export default function Layout() {
           <div className="text-xs leading-relaxed max-w-md">
             King Kong Autopartes Coronel Suárez SAS · Desarmadero oficial inscripto en DNRPA ·
             Autopartes con oblea RUDAC y factura.
+            <a href={EMAIL_HREF} className="block mt-1 font-semibold text-foreground hover:text-primary transition-colors">
+              {EMAIL.split('@')[0]}<wbr />@{EMAIL.split('@')[1]}
+            </a>
           </div>
         </div>
         <div className="pb-4 text-center">

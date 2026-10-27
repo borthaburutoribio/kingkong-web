@@ -19,6 +19,9 @@ export const WSP = {
   },
 }
 
+export const EMAIL = 'autoparteskingkong@gmail.com'
+export const EMAIL_HREF = `mailto:${EMAIL}?subject=${encodeURIComponent('Consulta por repuesto')}`
+
 export const MSG = encodeURIComponent(
   'Hola! Vi la página web de King Kong Autopartes y quería consultar por un repuesto.'
 )
